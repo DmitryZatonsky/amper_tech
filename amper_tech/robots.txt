@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vash-domen.com.ua/sitemap.xml

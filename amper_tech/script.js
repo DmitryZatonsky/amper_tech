@@ -1,0 +1,141 @@
+// Файл: script.js
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Инициализация анимаций
+    if (typeof AOS !== "undefined") {
+        AOS.init({ duration: 1000, once: true });
+    }
+
+// Маска телефона (Vanilla JS версія)
+
+const phoneInput = document.getElementById('phone');
+
+if (phoneInput) {
+    phoneInput.addEventListener('input', function (e) {
+        let input = e.target.value.replace(/\D/g, ''); // Видаляємо все, крім цифр
+        
+        // Підтримуємо формат, навіть якщо користувач видаляє 38
+        if (input.startsWith('38')) {
+            input = input.substring(2);
+        }
+
+        let formatted = '+38 ';
+        if (input.length > 0) {
+            formatted += '(' + input.substring(0, 3);
+        }
+        if (input.length >= 4) {
+            formatted += ') ' + input.substring(3, 6);
+        }
+        if (input.length >= 7) {
+            formatted += '-' + input.substring(6, 8);
+        }
+        if (input.length >= 9) {
+            formatted += '-' + input.substring(8, 10);
+        }
+
+        e.target.value = formatted.substring(0, 19); // Обмежуємо довжину шаблоном
+    });
+
+    // Додаткова перевірка: заборона вводу будь-чого, крім цифр
+    phoneInput.addEventListener('keypress', function (e) {
+        if (!/\d/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+}
+    // Форма
+    const form = document.getElementById('landingForm');
+    const successMsg = document.getElementById('formSuccess');
+
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Помилка при відправці. Спробуйте пізніше.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+
+    }
+
+    // Мобільне меню
+    
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+const overlay = document.getElementById('overlay'); // если есть оверлей
+
+if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+    });
+}
+
+// Закрытие меню при клике на пункт
+document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (mainNav) mainNav.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-xmark');
+    });
+});
+
+// Закрытие меню при клике на оверлей
+if (overlay) {
+    overlay.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        overlay.classList.remove('active');
+
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-xmark');
+    });
+}    // FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+});
