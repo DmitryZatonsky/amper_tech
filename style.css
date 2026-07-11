@@ -1,0 +1,205 @@
+/* Файл: style.css */
+:root {
+    --primary: #FF6B00; /* Яскраво-помаранчевий */
+    --dark: #1A1A1A;
+    --gray: #2C2C2C;
+    --light-gray: #F5F5F5;
+    --text: #333;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container-wrap {position: sticky;}
+.section { padding: 80px 0; }
+.section-dark { background: var(--dark); color: white; }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; }
+
+/* Header */
+.header { padding: 20px 0;  z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+.header .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 800; font-size: 1.5rem; color: var(--light-gray); }
+.logo span { color: var(--primary); }
+.nav a { margin: 0 15px; text-decoration: none; color: var(--light-gray); font-weight: 600; transition: 0.3s; }
+.nav a:hover { color: var(--primary); }
+
+/* Buttons */
+.btn { display: inline-block; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer; border: none; }
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(255,107,0,0.3); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,107,0,0.4); }
+.btn-primary:disabled { background-color: #555 !important; border-color: #555 !important; color: #aaa !important; cursor: not-allowed; opacity: 0.6; box-shadow: none !important; transform: none !important; }
+.btn-outline { margin-right: 15px; border: 2px solid var(--primary); color: var(--primary); }
+.btn-outline { padding: 10px 15px}
+
+@media (min-width: 993px) {
+    .btn-outline { margin-right: 0; }
+}
+
+/* Hero */
+.hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image/hero.jpg'); 
+        background-size: cover; height: 100svh;  color: white; }
+.hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+.hero p { font-size: 1.25rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; }
+.hero-badge { margin-left: 20px; font-size: 0.9rem; border-left: 2px solid var(--primary); padding-left: 15px; }
+.hero-content { position: absolute; top: 25svh;}
+
+/* Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card { background: white; padding: 40px; border-radius: 12px; box-shadow: var(--shadow); transition: 0.3s; border-bottom: 4px solid transparent; }
+.card:hover { transform: translateY(-10px); border-bottom-color: var(--primary); }
+.card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+.card h3 { margin-bottom: 15px; }
+
+/* Form */
+.form-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: var(--gray); padding: 50px; border-radius: 20px; }
+.order-form input { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #444; background: #333; color: white; }
+.btn-block { width: 100%; }
+.form-note { font-size: 0.8rem; opacity: 0.6; margin-top: 10px; text-align: center; }
+.success-msg { text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; color: var(--primary); font-weight: 600; }
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .form-wrapper { grid-template-columns: 1fr; padding: 30px; }
+    .nav { display: none; }
+}
+
+/* Мобільне меню */
+.header-flex { display: flex; justify-content: space-between; align-items: center; position: relative; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--light-gray); cursor: pointer; }
+
+@media (max-width: 992px) {
+    .menu-toggle { display: block; }
+    .nav-menu-button { display: flex; justify-content: space-between;}
+    .nav {
+            position: fixed;         /* фиксируем на экране */
+        top: 0;
+        left: -250px;            /* спрятано за экраном */
+        width: 250px;
+        height: 100vh;
+        background-color: #222;  /* цвет фона меню */
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transition: left 0.3s ease; /* анимация */
+        z-index: 1000;
+    }
+    .nav.active { left: 0; /* выезжает на экран */ }
+    .nav a { 
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem; }
+    .nav-phone-desktop { display: none; }
+    .nav-phone-mobile { display: block !important; color: var(--primary); font-weight: 800; }
+}
+
+@media (min-width: 993px) {
+    .nav-phone-mobile { display: none; }
+}
+
+/* FAQ стилі */
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--light-gray); margin-bottom: 15px; border-radius: 8px; overflow: hidden; cursor: pointer; }
+.faq-question { padding: 20px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+.faq-item:hover .faq-question { color: var(--primary); }
+.faq-answer { padding: 0 20px 20px; display: none; color: #555; }
+.faq-item.active .faq-answer { display: block; }
+.faq-item.active .faq-question i { transform: rotate(180deg); color: var(--primary); }
+
+/* Віджет месенджерів */
+.messenger-fab { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: center; }
+.fab-main { width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 5px 15px rgba(255,107,0,0.4); z-index: 2; transition: 0.3s; }
+.fab-item { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; margin-bottom: 15px; opacity: 0; transform: translateY(20px); transition: 0.3s; visibility: hidden; }
+.messenger-fab:hover .fab-item { opacity: 1; transform: translateY(0); visibility: visible; }
+.fab-item.tg { background: #0088cc; }
+.fab-item.wa { background: #25d366; }
+.messenger-fab:hover .fab-main { transform: rotate(90deg); }
+
+/* Карта та Контакти */
+.contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; }
+.contact-item { display: flex; align-items: center; margin-bottom: 20px; }
+.contact-item i { font-size: 20px; color: var(--primary); margin-right: 15px; }
+
+@media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 900;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* Кнопка Вгору */
+.back-to-top {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    color: white;
+    border: 2px solid var(--primary) !important;
+    border-radius: 12px; /* М'яке закруглення */
+    border-color: #e66000;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 998;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.fa-chevron-up { color: var(--primary) }
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:not(.show) {
+    transform: translateY(20px);
+}
+
+.back-to-top:hover {
+    background-color: #e66000; /* Трохи темніший помаранчевий */
+    color: var(--light-gray)
+}
+
+.back-to-top:hover .fa-chevron-up {
+    color: var(--light-gray);
+    transform: scale(1.1);
+}
+
+/* Плавний скрол для всієї сторінки */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Footer */
+.footer { background: var(--dark); color: white; padding: 50px 0 20px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #444; padding-bottom: 20px; }
+.footer .logo { color: white; }
+.footer-socials a { color: white; font-size: 1.5rem; margin-left: 20px; transition: 0.3s; }
+.footer-socials a:hover { color: var(--primary); transform: scale(1.2); }
+.footer-bottom { text-align: center; font-size: 0.9rem; opacity: 0.6; }
