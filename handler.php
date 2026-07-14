@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 2. НОВИЙ МЕХАНІЗМ: Відправка в Telegram
     
     // ВСТАВТЕ ВАШІ ДАНІ СЮДИ:
-    $token = "8926160016:AAGkgPCzQop_ZyyoayDZjBsjAThto-yzVQw"; 
+    $token = "8926160016:AAEHfE5ujcSUdDpImiD_RTFZQat9wOu0elQ"; 
     $chat_id = "7883821229";
 
     // Формуємо текст повідомлення
