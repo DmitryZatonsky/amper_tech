@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amper Tech | Професійний електромонтаж у вашому місті</title>
+    <title>Amper Tech | Професійний електромонтаж у Києві та області</title>
     <meta
       name="description"
       content="Надійний електромонтаж для новобудов та вторинного ринку. Фіксована ціна, QR-паспорт щита, гарантія безпеки."
     />
+
+    <link rel="alternate" hreflang="uk" href="https://amper-tech.kiev.ua/" />
+    <link rel="alternate" hreflang="ru" href="https://amper-tech.kiev.ua/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://amper-tech.kiev.ua/" />
 
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
@@ -17,21 +21,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="lang-modal" class="lang-modal">
-      <div class="lang-modal-content">
-        <h2>Оберіть мову / Выберите язык</h2>
-        <div class="lang-buttons">
-          <button
-            class="btn"
-            onclick="setLanguage('uk')"
-            style="background: var(--primary); color: white; border: none"
-          >
-            Українська
-          </button>
-          <button class="btn btn-secondary" onclick="setLanguage('ru')">Русский</button>
-        </div>
-      </div>
-    </div>
     <section class="hero">
       <div class="container container-wrap">
         <header class="header">
@@ -40,13 +29,19 @@
           >
 
           <nav class="nav" id="mainNav">
-            <a href="index.html" data-i18n="menu_home">Головна</a>
-            <a href="#advantages" data-i18n="menu_advantages">Переваги</a>
-            <a href="#faq" data-i18n="menu_faq">Часті запитання</a>
-            <a href="price.html" data-i18n="menu_price">Прайс</a>
-            <a href="#contacts" data-i18n="menu_contacts">Контакти</a>
+            <a href="index.html">Головна</a>
+            <a href="#advantages">Переваги</a>
+            <a href="#faq">Часті запитання</a>
+            <a href="price.html">Прайс</a>
+            <a href="#contacts">Контакти</a>
           </nav>
           <div class="nav-menu-button">
+            <div class="lang-switcher">
+              <span class="lang-item active">UA</span>
+              <span class="lang-divider">|</span>
+              <a href="ru/index.html" class="lang-item">RU</a>
+            </div>
+
             <a href="tel:+380992618747" class="btn btn-outline">
               <i class="fa-solid fa-phone"></i>
             </a>
@@ -63,13 +58,13 @@
         </header>
 
         <div class="hero-content" data-aos="fade-right">
-          <h1 data-i18n="hero_title">Електромонтаж без сюрпризів та «доплат»</h1>
-          <p data-i18n="hero_description">
+          <h1>Електромонтаж без сюрпризів та «доплат»</h1>
+          <p>
             Фіксуємо ціну в договорі. Створюємо цифрову карту ліній з QR-кодом на щиті. Робимо один раз і на
             десятиліття.
           </p>
           <div class="hero-btns">
-            <a href="#form" class="btn btn-primary" data-i18n="hero_cta">Отримати консультацію</a>
+            <a href="#form" class="btn btn-primary">Отримати консультацію</a>
           </div>
         </div>
       </div>
@@ -77,28 +72,24 @@
 
     <section id="advantages" class="section">
       <div class="container">
-        <h2 class="section-title" data-i18n="advantages_title">Чому обирають Amper Tech?</h2>
+        <h2 class="section-title">Чому обирають Amper Tech?</h2>
         <div class="grid">
           <div class="card" data-aos="up">
             <i class="fa-solid fa-file-invoice-dollar"></i>
-            <h3 data-i18n="advantages_subtitle_price">Ціна не росте</h3>
-            <p data-i18n="advantages_description_price">
-              Сума в кошторисі остаточна. Жодних «ой, ми забули про цей дріт» у процесі ремонту.
-            </p>
+            <h3>Ціна не росте</h3>
+            <p>Сума в кошторисі остаточна. Жодних «ой, ми забули про цей дріт» у процесі ремонту.</p>
           </div>
           <div class="card" data-aos="up" data-aos-delay="100">
             <i class="fa-solid fa-shield-virus"></i>
-            <h3 data-i18n="advantages_subtitle_fire">Захист від пожежі</h3>
-            <p data-i18n="advantages_description_fire">
+            <h3>Захист від пожежі</h3>
+            <p>
               Використовуємо лише сертифіковане обладнання та розраховуємо навантаження з запасом не меньше ніж 20%.
             </p>
           </div>
           <div class="card" data-aos="up" data-aos-delay="200">
             <i class="fa-solid fa-qrcode"></i>
-            <h3 data-i18n="advantages_subtitle_digital">Цифровий паспорт</h3>
-            <p data-i18n="advantages_description_digital">
-              QR-код на щиті відкриє схему ліній на смартфоні. Ви завжди знаєте, де проходить дріт у стіні.
-            </p>
+            <h3>Цифровий паспорт</h3>
+            <p>QR-код на щиті відкриє схему ліній на смартфоні. Ви завжди знаєте, де проходить дріт у стіні.</p>
           </div>
         </div>
       </div>
@@ -106,40 +97,34 @@
 
     <section id="faq" class="section">
       <div class="container">
-        <h2 class="section-title" data-i18n="faq_title">Часті запитання</h2>
+        <h2 class="section-title">Часті запитання</h2>
         <div class="faq-container">
           <div class="faq-item" data-aos="fade-up">
-            <div class="faq-question" data-i18n="faq_question_price">
+            <div class="faq-question">
               Чи зміниться ціна після початку робіт? <i class="fa-solid fa-chevron-down"></i>
             </div>
-            <div class="faq-answer" data-i18n="faq_answer_price">
+            <div class="faq-answer">
               Ні. Ми складаємо детальний кошторис до початку монтажу. Сума фіксується в договорі і залишається
               незмінною, якщо ви не вирішите додати нові точки в процесі.
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up">
-            <div class="faq-question" data-i18n="faq_question_qr">
-              Що таке QR-паспорт щита? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer" data-i18n="faq_answer_qr">
+            <div class="faq-question">Що таке QR-паспорт щита? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">
               Це наклейка на внутрішній стороні вашого електрощита. Відсканувавши її, ви отримуєте доступ до цифрової
               схеми розведення кабелів по квартирі. Ви точно знатимете, де можна свердлити стіну, а де ні.
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up">
-            <div class="faq-question" data-i18n="faq_question_materials">
-              Які матеріали ви використовуєте? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer" data-i18n="faq_answer_materials">
+            <div class="faq-question">Які матеріали ви використовуєте? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">
               Працюємо лише з перевіреними брендами (Schneider Electric, ABB, Hager). Використовуємо кабель ВВГнг-п LS,
               який не підтримує горіння та має низьке димовиділення.
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up">
-            <div class="faq-question" data-i18n="faq_question_warranty">
-              Чи даєте ви гарантію на роботу? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer" data-i18n="faq_answer_warranty">
+            <div class="faq-question">Чи даєте ви гарантію на роботу? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">
               Так, ми надаємо офіційну гарантію 5 років на всі наші монтажні роботи. У разі будь-яких питань наш майстер
               виїжджає на об'єкт безкоштовно.
             </div>
@@ -152,18 +137,12 @@
       <div class="container">
         <div class="form-wrapper">
           <div class="form-info">
-            <h2 data-i18n="form_title">Зарядіть свій дім на надійність</h2>
-            <p data-i18n="form_description">Отримайте розрахунок кошторису, який не зміниться в процесі робіт.</p>
+            <h2>Зарядіть свій дім на надійність</h2>
+            <p>Отримайте розрахунок кошторису, який не зміниться в процесі робіт.</p>
           </div>
           <form id="landingForm" class="order-form">
             <div class="input-group">
-              <input
-                type="text"
-                name="name"
-                placeholder="Ваше ім'я"
-                required
-                data-i18n-placeholder="form_name_placeholder"
-              />
+              <input type="text" name="name" placeholder="Ваше ім'я" required />
             </div>
             <div class="input-group">
               <input
@@ -173,18 +152,13 @@
                 placeholder="+38 (___) ___-__-__"
                 pattern="\+38 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}"
                 title="Введіть номер у форматі +38 (XXX) XXX-XX-XX"
-                data-i18n-placeholder="form_phone_placeholder"
                 required
               />
             </div>
-            <button type="submit" class="btn btn-primary btn-block" data-i18n="form_button">
-              Отримати консультацію
-            </button>
-            <p class="form-note" data-i18n="form_note">
-              Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.
-            </p>
+            <button type="submit" class="btn btn-primary btn-block">Отримати консультацію</button>
+            <p class="form-note">Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.</p>
           </form>
-          <div id="formSuccess" class="success-msg" style="display: none" data-i18n="form_success">
+          <div id="formSuccess" class="success-msg" style="display: none">
             <i class="fa-solid fa-circle-check"></i> Дякуємо! Ми зв'яжемося з вами протягом 10 хвилин.
           </div>
         </div>
@@ -193,12 +167,12 @@
 
     <section id="contacts" class="section">
       <div class="container">
-        <h2 class="section-title" data-i18n="contacts_title">Наші контакти</h2>
+        <h2 class="section-title">Наші контакти</h2>
         <div class="contact-grid">
           <div class="contact-info">
             <div class="contact-item">
               <i class="fa-solid fa-location-dot"></i>
-              <p data-i18n="contacts_address">Україна, Київ</p>
+              <p>Україна, Київ</p>
             </div>
             <div class="contact-item">
               <i class="fa-solid fa-phone"></i>
@@ -206,7 +180,7 @@
             </div>
             <div class="contact-item">
               <i class="fa-solid fa-envelope"></i>
-              <p data-i18n="contacts_email">info@ampertech.com.ua</p>
+              <p>info@ampertech.com.ua</p>
             </div>
           </div>
           <div class="map-container">
@@ -246,7 +220,7 @@
             </div>
  -->
         <div class="footer-bottom">
-          <p data-i18n="footer_copyright">&copy; 2026 Amper Tech. Професійний електромонтаж.</p>
+          <p>&copy; 2026 Amper Tech. Професійний електромонтаж.</p>
         </div>
       </div>
     </footer>

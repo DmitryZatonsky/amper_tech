@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amper Tech | Професійний електромонтаж у вашому місті</title>
+    <title>Amper Tech | Професійний електромонтаж у Києві та області</title>
     <meta
       name="description"
       content="Надійний електромонтаж для новобудов та вторинного ринку. Фіксована ціна, QR-паспорт щита, гарантія безпеки."
     />
+
+    <link rel="alternate" hreflang="uk" href="https://amper-tech.kiev.ua/" />
+    <link rel="alternate" hreflang="ru" href="https://amper-tech.kiev.ua/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://amper-tech.kiev.ua/" />
 
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
@@ -18,21 +22,6 @@
   </head>
 
   <body>
-    <div id="lang-modal" class="lang-modal">
-      <div class="lang-modal-content">
-        <h2>Оберіть мову / Выберите язык</h2>
-        <div class="lang-buttons">
-          <button
-            class="btn"
-            onclick="setLanguage('uk')"
-            style="background: var(--primary); color: white; border: none"
-          >
-            Українська
-          </button>
-          <button class="btn btn-secondary" onclick="setLanguage('ru')">Русский</button>
-        </div>
-      </div>
-    </div>
     <section class="section-dark">
       <div class="container container-wrap">
         <header class="header">
@@ -41,13 +30,19 @@
           >
 
           <nav class="nav" id="mainNav">
-            <a href="index.html" data-i18n="menu_home">Головна</a>
+            <a href="index.html">Головна</a>
             <!-- <a href="#advantages">Переваги</a> -->
             <!-- <a href="#faq">Часті запитання</a> -->
-            <a href="price.html" data-i18n="menu_price">Прайс</a>
+            <a href="price.html">Прайс</a>
             <!-- <a href="#contacts">Контакти</a> -->
           </nav>
           <div class="nav-menu-button">
+            <div class="lang-switcher">
+              <span class="lang-item active">UA</span>
+              <span class="lang-divider">|</span>
+              <a href="ru/price.html" class="lang-item">RU</a>
+            </div>
+
             <a href="tel:+380992618747" class="btn btn-outline">
               <i class="fa-solid fa-phone"></i>
             </a>
@@ -67,12 +62,12 @@
 
     <section class="section section-light">
       <div class="container">
-        <p style="text-align: center; margin-bottom: 40px" data-i18n="price_description">
+        <p style="text-align: center; margin-bottom: 40px">
           Ціни актуальні на сьогодні. Кінцевий кошторис фіксується після огляду об'єкта.
         </p>
 
         <div id="priceContainer">
-          <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666" data-i18n="price_loading">
+          <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666">
             <i class="fa-solid fa-spinner fa-spin" style="margin-right: 10px"></i> Завантаження цін...
           </div>
         </div>
@@ -102,7 +97,7 @@
             </div>
  -->
         <div class="footer-bottom">
-          <p data-i18n="footer_copyright">&copy; 2026 Amper Tech. Професійний електромонтаж.</p>
+          <p>&copy; 2026 Amper Tech. Професійний електромонтаж.</p>
         </div>
       </div>
     </footer>

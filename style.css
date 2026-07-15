@@ -30,7 +30,7 @@ a {
   padding: 0 20px;
 }
 .container-wrap {
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 10000;
 }
@@ -81,6 +81,42 @@ a {
   color: var(--primary);
 }
 
+/* Переключатель языков */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.lang-item {
+  color: rgba(255, 255, 255, 0.5); /* Неактивный язык — полупрозрачный */
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.lang-item:hover {
+  color: var(--primary);
+}
+
+.lang-item.active {
+  color: var(--primary); /* Активный язык — оранжевый */
+  pointer-events: none; /* Чтобы нельзя было кликнуть на уже выбранный */
+}
+
+.lang-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* На мобилках можно сделать чуть крупнее для удобства нажатия пальцем */
+@media (max-width: 768px) {
+  .lang-switcher {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+}
+
 /* Buttons */
 .btn {
   display: inline-block;
@@ -110,12 +146,10 @@ a {
   box-shadow: none !important;
   transform: none !important;
 }
+
 .btn-outline {
-  margin-right: 15px;
   border: 2px solid var(--primary);
   color: var(--primary);
-}
-.btn-outline {
   padding: 10px 15px;
 }
 
@@ -123,6 +157,12 @@ a {
   .btn-outline {
     margin-right: 0;
   }
+}
+
+.btn-leng {
+  background: var(--primary);
+  color: white;
+  border: none;
 }
 
 /* Hero */
@@ -238,6 +278,14 @@ a {
   align-items: center;
   position: relative;
 }
+
+.nav-menu-button {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 15px;
+}
+
 .menu-toggle {
   display: none;
   background: none;
@@ -250,10 +298,6 @@ a {
 @media (max-width: 992px) {
   .menu-toggle {
     display: block;
-  }
-  .nav-menu-button {
-    display: flex;
-    justify-content: space-between;
   }
   .nav {
     position: fixed; /* фиксируем на экране */
@@ -290,49 +334,6 @@ a {
 @media (min-width: 993px) {
   .nav-phone-mobile {
     display: none;
-  }
-}
-
-/* --- МОДАЛКА ВЫБОРА ЯЗЫКА --- */
-.lang-modal {
-  display: none; /* Скрыта по умолчанию */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85); /* Темный фон */
-  z-index: 99999; /* Поверх всего */
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(5px);
-}
-
-.lang-modal-content {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  animation: popUp 0.4s ease-out forwards;
-}
-
-.lang-modal-content h2 {
-  color: var(--dark);
-  margin-bottom: 30px;
-  font-size: 1.5rem;
-}
-
-.lang-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-@media (max-width: 480px) {
-  .lang-buttons {
-    flex-direction: column;
   }
 }
 
