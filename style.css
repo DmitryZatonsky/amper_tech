@@ -1,4 +1,3 @@
-/* Файл: style.css */
 :root {
   --primary: #ff6b00; /* Яскраво-помаранчевий */
   --dark: #1a1a1a;
@@ -288,6 +287,60 @@ a {
 @media (min-width: 993px) {
   .nav-phone-mobile {
     display: none;
+  }
+}
+
+/* --- МОДАЛКА ВЫБОРА ЯЗЫКА --- */
+.lang-modal {
+  display: none; /* Скрыта по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Темный фон */
+  z-index: 99999; /* Поверх всего */
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.lang-modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  animation: popUp 0.4s ease-out forwards;
+}
+
+.lang-modal-content h2 {
+  color: var(--dark);
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.lang-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .lang-buttons {
+    flex-direction: column;
+  }
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
