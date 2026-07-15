@@ -31,6 +31,8 @@ a {
 }
 .container-wrap {
   position: sticky;
+  top: 0;
+  z-index: 10000;
 }
 .section {
   padding: 80px 0;
@@ -48,6 +50,7 @@ a {
 
 /* Header */
 .header {
+  position: relative;
   padding: 20px 0;
   z-index: 1000;
   display: flex;
@@ -264,7 +267,7 @@ a {
     padding: 2rem;
     gap: 1rem;
     transition: left 0.3s ease; /* анимация */
-    z-index: 1000;
+    z-index: 9999;
   }
   .nav.active {
     left: 0; /* выезжает на экран */
@@ -469,7 +472,7 @@ a {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 900;
+  z-index: 9998;
 }
 
 .overlay.active {
