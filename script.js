@@ -239,8 +239,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
           catData._subOrder.forEach((subName) => {
             finalHtml += `
-              <div class="price-subcategory-group" style="margin-left: 15px; margin-bottom: 35px;">
-                <h3 class="subcategory-title" style="font-size: 1.35rem; color: #333; margin-top: 25px; margin-bottom: 15px; font-weight: 700; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px;">
+              <div class="price-subcategory-group">
+                <h3 class="subcategory-title">
                   ${subName}
                 </h3>
             `;

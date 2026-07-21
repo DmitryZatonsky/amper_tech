@@ -569,6 +569,18 @@ html {
   color: var(--primary);
   white-space: nowrap;
 }
+.price-subcategory-group {
+  margin-bottom: 35px;
+}
+.subcategory-title {
+  font-size: 1.35rem;
+  color: #333;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+}
 
 /* Footer */
 .footer {
