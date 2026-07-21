@@ -165,12 +165,29 @@ a {
   border: none;
 }
 
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+.btn-secondary:hover {
+  background: white;
+  color: var(--dark);
+  transform: translateY(-3px);
+}
+
 /* Hero */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("image/hero.jpg");
   background-size: cover;
   height: 100svh;
   color: white;
+}
+.hero-electrical {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("image/hero.jpg");
+}
+.hero-backup-power {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("image/hero-backup-power.jpg");
+  background-position: right top;
 }
 .hero h1 {
   font-size: 3.5rem;
@@ -192,6 +209,11 @@ a {
 .hero-content {
   position: absolute;
   top: 25svh;
+}
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 /* Cards */
@@ -220,6 +242,44 @@ a {
 .card h3 {
   margin-bottom: 15px;
 }
+.card .icon-warn {
+  color: var(--primary);
+}
+
+/* Кроки процесу */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 40px 30px;
+}
+.process-step {
+  position: relative;
+  background: white;
+  color: var(--text);
+  padding: 35px 25px 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.process-step .step-number {
+  position: absolute;
+  top: -18px;
+  left: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(255, 107, 0, 0.4);
+}
+.process-step h3 {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
 
 /* Form */
 .form-wrapper {
@@ -230,6 +290,19 @@ a {
   background: var(--gray);
   padding: 50px;
   border-radius: 20px;
+}
+
+/* Панель на темній секції  */
+.dark-panel {
+  background: var(--gray);
+  padding: 50px;
+  border-radius: 20px;
+}
+.background-gray {
+  background: var(--dark);
+}
+.dark-panel .card {
+  background: var(--gray);
 }
 .order-form input {
   width: 100%;
@@ -258,12 +331,38 @@ a {
   font-weight: 600;
 }
 
+/* Доступність: видно скрінрідерам, приховано візуально */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Honeypot-поле проти ботів: приховане для людей, доступне для простих ботів */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.5rem;
   }
   .form-wrapper {
     grid-template-columns: 1fr;
+    padding: 30px;
+  }
+  .dark-panel {
     padding: 30px;
   }
   .nav {

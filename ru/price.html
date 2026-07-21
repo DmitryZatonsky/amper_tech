@@ -3,15 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amper Tech | Профессиональный электромонтаж в Киеве и области</title>
+    <title>Прайс на электромонтажные работы | Amper Tech</title>
     <meta
       name="description"
-      content="Надежный электромонтаж для новостроек и вторичного рынка. Фиксированная цена, QR-паспорт щита, гарантия безопасности."
+      content="Актуальные цены на электромонтаж в Киеве: разводка проводки, подключение щитов, монтаж розеток. Фиксированная стоимость без скрытых доплат."
     />
 
-    <link rel="alternate" hreflang="uk" href="https://amper-tech.kiev.ua/" />
-    <link rel="alternate" hreflang="ru" href="https://amper-tech.kiev.ua/ru/" />
-    <link rel="alternate" hreflang="x-default" href="https://amper-tech.kiev.ua/" />
+    <link rel="alternate" hreflang="uk" href="https://amper-tech.kiev.ua/price.html" />
+    <link rel="alternate" hreflang="ru" href="https://amper-tech.kiev.ua/ru/price.html" />
+    <link rel="alternate" hreflang="x-default" href="https://amper-tech.kiev.ua/price.html" />
+    <link rel="canonical" href="https://amper-tech.kiev.ua/ru/price.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Amper Tech" />
+    <meta property="og:title" content="Прайс на электромонтажные работы | Amper Tech" />
+    <meta
+      property="og:description"
+      content="Актуальные цены на электромонтаж в Киеве: разводка проводки, подключение щитов, монтаж розеток. Фиксированная стоимость без скрытых доплат."
+    />
+    <meta property="og:url" content="https://amper-tech.kiev.ua/ru/price.html" />
+    <meta property="og:image" content="https://amper-tech.kiev.ua/image/hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Прайс на электромонтажные работы | Amper Tech" />
+    <meta
+      name="twitter:description"
+      content="Актуальные цены на электромонтаж в Киеве: разводка проводки, подключение щитов, монтаж розеток. Фиксированная стоимость без скрытых доплат."
+    />
+    <meta name="twitter:image" content="https://amper-tech.kiev.ua/image/hero.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
 
     <link rel="icon" type="image/png" href="../favicon.png" />
     <link rel="apple-touch-icon" href="../favicon.png" />
@@ -32,6 +56,7 @@
           <nav class="nav" id="mainNav">
             <a href="index.html">Главная</a>
             <a href="price.html">Прайс</a>
+            <a href="backup-power.html">Резервное питание</a>
           </nav>
           <div class="nav-menu-button">
             <div class="lang-switcher">
@@ -40,17 +65,23 @@
               <a href="../price.html" class="lang-item">UA</a>
             </div>
 
-            <a href="tel:+380992618747" class="btn btn-outline">
+            <a href="tel:+380992618747" class="btn btn-outline" aria-label="Позвонить">
               <i class="fa-solid fa-phone"></i>
             </a>
 
-            <button class="menu-toggle" id="menuToggle">
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Открыть меню"
+              aria-expanded="false"
+              aria-controls="mainNav"
+            >
               <i class="fa-solid fa-bars"></i>
             </button>
             <div class="overlay" id="overlay"></div>
           </div>
 
-          <div id="backToTop" class="back-to-top">
+          <div id="backToTop" class="back-to-top" role="button" tabindex="0" aria-label="Наверх">
             <i class="fa-solid fa-chevron-up"></i>
           </div>
         </header>
@@ -78,20 +109,26 @@
             <h2>Зарядите свой дом на надежность</h2>
             <p>Получите расчет стоимости, который не изменится в процессе работ.</p>
           </div>
-          <form id="landingForm" class="order-form">
+          <form id="landingForm" class="order-form" action="/handler.php" method="POST">
             <div class="input-group">
-              <input type="text" name="name" placeholder="Ваше ім'я" required />
+              <label for="name" class="sr-only">Ваше имя</label>
+              <input type="text" id="name" name="name" placeholder="Ваше имя" required />
             </div>
             <div class="input-group">
+              <label for="phone" class="sr-only">Телефон</label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 placeholder="+38 (___) ___-__-__"
                 pattern="\+38 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}"
-                title="Введіть номер у форматі +38 (XXX) XXX-XX-XX"
+                title="Введите номер в формате +38 (XXX) XXX-XX-XX"
                 required
               />
+            </div>
+            <div class="input-group hp-field" aria-hidden="true">
+              <label for="website">Оставьте это поле пустым</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
             </div>
             <button type="submit" class="btn btn-primary btn-block">Получить консультацию</button>
             <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>

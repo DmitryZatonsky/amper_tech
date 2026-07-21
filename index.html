@@ -14,15 +14,61 @@
     <link rel="alternate" hreflang="x-default" href="https://amper-tech.kiev.ua/" />
     <link rel="canonical" href="https://amper-tech.kiev.ua/" />
 
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:site_name" content="Amper Tech" />
+    <meta property="og:title" content="Amper Tech | Професійний електромонтаж у Києві та області" />
+    <meta
+      property="og:description"
+      content="Надійний електромонтаж для новобудов та вторинного ринку. Фіксована ціна, QR-паспорт щита, гарантія безпеки."
+    />
+    <meta property="og:url" content="https://amper-tech.kiev.ua/" />
+    <meta property="og:image" content="https://amper-tech.kiev.ua/image/hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amper Tech | Професійний електромонтаж у Києві та області" />
+    <meta
+      name="twitter:description"
+      content="Надійний електромонтаж для новобудов та вторинного ринку. Фіксована ціна, QR-паспорт щита, гарантія безпеки."
+    />
+    <meta name="twitter:image" content="https://amper-tech.kiev.ua/image/hero.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Electrician",
+        "name": "Amper Tech",
+        "image": "https://amper-tech.kiev.ua/image/hero.jpg",
+        "url": "https://amper-tech.kiev.ua/",
+        "telephone": "+380992618747",
+        "email": "info@ampertech.com.ua",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Київ",
+          "addressCountry": "UA"
+        },
+        "areaServed": "Київ та область",
+        "sameAs": [
+          "https://www.instagram.com/amper_tech.kiev",
+          "https://www.tiktok.com/@amper_tech",
+          "https://t.me/amper_tech"
+        ]
+      }
+    </script>
   </head>
   <body>
-    <section class="hero">
+    <section class="hero hero-electrical">
       <div class="container container-wrap">
         <header class="header">
           <a href="index.html"
@@ -34,6 +80,7 @@
             <a href="#advantages">Переваги</a>
             <a href="#faq">Часті запитання</a>
             <a href="price.html">Прайс</a>
+            <a href="backup-power.html">Резервне живлення</a>
             <a href="#contacts">Контакти</a>
           </nav>
           <div class="nav-menu-button">
@@ -43,17 +90,23 @@
               <a href="ru/index.html" class="lang-item">RU</a>
             </div>
 
-            <a href="tel:+380992618747" class="btn btn-outline">
+            <a href="tel:+380992618747" class="btn btn-outline" aria-label="Зателефонувати">
               <i class="fa-solid fa-phone"></i>
             </a>
 
-            <button class="menu-toggle" id="menuToggle">
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Відкрити меню"
+              aria-expanded="false"
+              aria-controls="mainNav"
+            >
               <i class="fa-solid fa-bars"></i>
             </button>
             <div class="overlay" id="overlay"></div>
           </div>
 
-          <div id="backToTop" class="back-to-top">
+          <div id="backToTop" class="back-to-top" role="button" tabindex="0" aria-label="Нагору">
             <i class="fa-solid fa-chevron-up"></i>
           </div>
         </header>
@@ -141,11 +194,13 @@
             <h2>Зарядіть свій дім на надійність</h2>
             <p>Отримайте розрахунок кошторису, який не зміниться в процесі робіт.</p>
           </div>
-          <form id="landingForm" class="order-form">
+          <form id="landingForm" class="order-form" action="/handler.php" method="POST">
             <div class="input-group">
-              <input type="text" name="name" placeholder="Ваше ім'я" required />
+              <label for="name" class="sr-only">Ваше ім'я</label>
+              <input type="text" id="name" name="name" placeholder="Ваше ім'я" required />
             </div>
             <div class="input-group">
+              <label for="phone" class="sr-only">Телефон</label>
               <input
                 type="tel"
                 id="phone"
@@ -155,6 +210,10 @@
                 title="Введіть номер у форматі +38 (XXX) XXX-XX-XX"
                 required
               />
+            </div>
+            <div class="input-group hp-field" aria-hidden="true">
+              <label for="website">Залиште це поле порожнім</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
             </div>
             <button type="submit" class="btn btn-primary btn-block">Отримати консультацію</button>
             <p class="form-note">Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.</p>

@@ -9,20 +9,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const successMsg = document.getElementById("formSuccess");
 
   if (form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const lang = document.documentElement.lang || "uk";
+    const errMsg =
+      lang === "ru" ? "Ошибка при отправке. Попробуйте позже." : "Помилка при відправці. Спробуйте пізніше.";
+    const netErrMsg =
+      lang === "ru"
+        ? "Ошибка сети. Проверьте соединение и попробуйте снова."
+        : "Помилка мережі. Перевірте з'єднання та спробуйте ще раз.";
+
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
       const formData = new FormData(form);
+      if (submitBtn) submitBtn.disabled = true;
       try {
-        const response = await fetch("handler.php", { method: "POST", body: formData });
+        const response = await fetch("/handler.php", { method: "POST", body: formData });
         if (response.ok) {
           form.style.display = "none";
           successMsg.style.display = "block";
           form.reset();
         } else {
-          alert("Помилка при відправці. Спробуйте пізніше.");
+          alert(errMsg);
         }
       } catch (error) {
         console.error("Error:", error);
+        alert(netErrMsg);
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }
@@ -34,8 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("active");
+      const isActive = mainNav.classList.toggle("active");
       if (overlay) overlay.classList.toggle("active");
+      menuToggle.setAttribute("aria-expanded", String(isActive));
       const icon = menuToggle.querySelector("i");
       icon.classList.toggle("fa-bars");
       icon.classList.toggle("fa-xmark");
@@ -47,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (mainNav) mainNav.classList.remove("active");
       if (overlay) overlay.classList.remove("active");
       if (menuToggle) {
+        menuToggle.setAttribute("aria-expanded", "false");
         const icon = menuToggle.querySelector("i");
         if (icon) {
           icon.classList.add("fa-bars");
@@ -61,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mainNav.classList.remove("active");
       overlay.classList.remove("active");
       if (menuToggle) {
+        menuToggle.setAttribute("aria-expanded", "false");
         const icon = menuToggle.querySelector("i");
         if (icon) {
           icon.classList.add("fa-bars");
@@ -87,6 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    backToTop.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     });
   }
 
