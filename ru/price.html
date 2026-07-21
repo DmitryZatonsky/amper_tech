@@ -74,6 +74,38 @@
       </div>
     </section>
 
+    <section id="form" class="section section-dark">
+      <div class="container">
+        <div class="form-wrapper">
+          <div class="form-info">
+            <h2>Зарядите свой дом на надежность</h2>
+            <p>Получите расчет стоимости, который не изменится в процессе работ.</p>
+          </div>
+          <form id="landingForm" class="order-form">
+            <div class="input-group">
+              <input type="text" name="name" placeholder="Ваше ім'я" required />
+            </div>
+            <div class="input-group">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+38 (___) ___-__-__"
+                pattern="\+38 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}"
+                title="Введіть номер у форматі +38 (XXX) XXX-XX-XX"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Получить консультацию</button>
+            <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+          </form>
+          <div id="formSuccess" class="success-msg" style="display: none">
+            <i class="fa-solid fa-circle-check"></i> Спасибо! Мы свяжемся с вами в течение 10 минут.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="container">
         <div class="footer-top">
