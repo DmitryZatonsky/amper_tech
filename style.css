@@ -986,3 +986,60 @@ html {
     grid-template-columns: 1fr;
   }
 }
+
+/* Від чого залежить вартість */
+.cost-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cost-box .section-title {
+  margin-bottom: 30px;
+}
+.cost-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.cost-list li {
+  position: relative;
+  background: white;
+  padding: 14px 20px 14px 48px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.cost-list li::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.cost-example {
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.btn-dark-outline {
+  border: 2px solid var(--dark);
+  color: var(--dark);
+  padding: 13px 33px;
+}
+.btn-dark-outline:hover {
+  background: var(--dark);
+  color: white;
+}
+@media (max-width: 480px) {
+  .cta-row .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
