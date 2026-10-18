@@ -207,7 +207,7 @@ a {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0, rgba(10, 10, 10, 0) 160px),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.85) 0, rgba(10, 10, 10, 0.85) 72px, rgba(10, 10, 10, 0) 200px),
     linear-gradient(
       90deg,
       rgba(10, 10, 10, 0.88) 0,
@@ -445,7 +445,7 @@ a {
   }
   .hero-slides::after {
     background:
-      linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0, rgba(10, 10, 10, 0) 160px),
+      linear-gradient(180deg, rgba(10, 10, 10, 0.85) 0, rgba(10, 10, 10, 0.85) 72px, rgba(10, 10, 10, 0) 200px),
       linear-gradient(0deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.72) 45%, rgba(10, 10, 10, 0.25) 100%);
   }
   .hero-content {
