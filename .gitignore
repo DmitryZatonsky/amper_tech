@@ -7,3 +7,6 @@ leads.csv
 # ОС/редакторы
 .DS_Store
 Thumbs.db
+
+# Локальні налаштування Claude Code
+.claude/
