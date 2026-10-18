@@ -1181,3 +1181,136 @@ html {
     bottom: 80px;
   }
 }
+
+/* Як ми працюємо */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.step {
+  position: relative;
+  text-align: center;
+}
+.step-num {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 800;
+}
+.step:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: calc(-50% - 10px + 30px);
+  right: calc(50% + 30px);
+  height: 2px;
+  background: #ccc;
+}
+.step h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.step p {
+  color: #555;
+  font-size: 0.95rem;
+}
+.step-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #fff1e6;
+  color: #9a3412;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 16px;
+    align-content: start;
+    justify-items: start;
+    padding-bottom: 28px;
+    text-align: left;
+  }
+  .step-num {
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+  .step:not(:first-child)::before {
+    content: none;
+  }
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 44px;
+    bottom: 0;
+    width: 2px;
+    background: #ccc;
+  }
+  .step h3,
+  .step p,
+  .step-tag {
+    grid-column: 2;
+  }
+  .step-tag {
+    margin-top: 6px;
+  }
+}
+
+/* Документація на щит і гарантія */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.info-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.info-card i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+.info-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.guarantee-term {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Кошторис */
+.estimate {
+  margin-bottom: 25px;
+  padding: 16px 20px;
+  background: white;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
