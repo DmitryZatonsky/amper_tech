@@ -21,3 +21,10 @@
     RedirectMatch 404 "/\.(?!well-known/)"
     RedirectMatch 404 "\.md$"
 </IfModule>
+
+# HTML завжди перевіряється на сервері (щоб не залипали старі сторінки в кеші браузера)
+<IfModule mod_headers.c>
+    <FilesMatch "\.html?$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
