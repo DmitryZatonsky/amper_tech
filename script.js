@@ -602,4 +602,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.readyState === "complete") whenIdle();
     else window.addEventListener("load", whenIdle, { once: true });
   })();
+
+  // 8. Відгуки: картки з'являються по черзі при скролі (без JS і при reduced-motion видно одразу)
+  (function () {
+    const section = document.getElementById("reviews");
+    if (!section || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const cards = Array.from(section.querySelectorAll(".review"));
+    if (!cards.length) return;
+    section.classList.add("reviews-js");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, i) => {
+            entry.target.style.setProperty("--d", i * 80 + "ms");
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+      },
+      { threshold: 0.15 }
+    );
+    cards.forEach((card) => observer.observe(card));
+  })();
 });
