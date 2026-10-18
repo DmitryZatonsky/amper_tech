@@ -85,10 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // 3. Кнопка "Вгору"
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) backToTop.classList.add("show");
+    const toggleBackToTop = () => {
+      if (window.scrollY > 600) backToTop.classList.add("show");
       else backToTop.classList.remove("show");
-    });
+    };
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    toggleBackToTop();
 
     backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
