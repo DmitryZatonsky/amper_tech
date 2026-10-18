@@ -480,6 +480,12 @@ a {
   }
 }
 
+@media (min-width: 481px) {
+  .hero-btns .btn {
+    max-width: 420px;
+  }
+}
+
 /* Телефон горизонтально: низький екран, текст під шапкою */
 @media (max-width: 768px) and (max-height: 500px) {
   .hero-content {
