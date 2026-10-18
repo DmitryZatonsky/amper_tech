@@ -754,10 +754,9 @@ a {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: white;
+  background: transparent;
   border: 2px solid var(--primary);
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
@@ -769,7 +768,7 @@ a {
     background-color 0.3s;
 }
 .back-to-top i {
-  color: var(--primary-text);
+  color: var(--primary);
   transition: transform 0.3s;
 }
 .back-to-top.show {
