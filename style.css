@@ -1113,3 +1113,11 @@ html {
     grid-template-columns: 1fr;
   }
 }
+
+/* Про нас */
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  text-align: center;
+}
