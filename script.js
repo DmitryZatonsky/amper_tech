@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           form.style.display = "none";
           successMsg.style.display = "block";
           form.reset();
+          window.gtag && gtag("event", "generate_lead", { page_path: location.pathname });
         } else {
           alert(errMsg);
         }
