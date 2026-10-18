@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Анімації AOS
-  if (typeof AOS !== "undefined") {
-    AOS.init({ duration: 1000, once: true });
-  }
-
-  // 2. Відправка форми
+  // 1. Відправка форми
   const form = document.getElementById("landingForm");
   const successMsg = document.getElementById("formSuccess");
 
@@ -40,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 3. Мобільне меню
+  // 2. Мобільне меню
   const menuToggle = document.getElementById("menuToggle");
   const mainNav = document.getElementById("mainNav");
   const overlay = document.getElementById("overlay");
@@ -93,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 5. Кнопка "Вгору"
+  // 4. Кнопка "Вгору"
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
     window.addEventListener("scroll", () => {
@@ -113,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 6. Маска телефону
+  // 5. Маска телефону
   const phoneInput = document.getElementById("phone");
   if (phoneInput) {
     phoneInput.addEventListener("input", function (e) {
@@ -132,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 7. Завантаження прайс-листа (якщо ми на сторінці прайсу)
+  // 6. Завантаження прайс-листа (якщо ми на сторінці прайсу)
   const priceContainer = document.querySelector("#priceContainer");
   if (priceContainer) {
     // Визначаємо поточну мову на основі тегу <html>
@@ -262,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
         categoryOrder.forEach((categoryName) => {
           const catData = categories[categoryName];
           finalHtml += `
-            <div class="price-category-group" style="margin-bottom: 60px;" data-aos="fade-up">
+            <div class="price-category-group" style="margin-bottom: 60px;">
               <h2 class="category-title" style="font-size: 2rem; color: var(--primary-text); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 15px; font-weight: 800; text-transform: uppercase;">
                 ${escapeHtml(categoryName)}
               </h2>
@@ -283,7 +278,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         priceContainer.innerHTML = finalHtml;
-        if (typeof AOS !== "undefined") AOS.refresh();
       })
       .catch((error) => {
         console.error("Помилка завантаження прайсу:", error);
