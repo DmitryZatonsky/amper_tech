@@ -949,3 +949,40 @@ html {
   font-size: 0.9rem;
   opacity: 0.6;
 }
+
+/* Відгуки */
+.section-alt {
+  background: var(--light-gray);
+}
+.section-note {
+  text-align: center;
+  color: #555;
+  margin: -30px 0 40px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.review-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.review-card blockquote p {
+  font-size: 1.05rem;
+}
+.review-author {
+  font-weight: 700;
+  color: #555;
+}
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
