@@ -1121,3 +1121,59 @@ html {
   font-size: 1.1rem;
   text-align: center;
 }
+
+/* Нижня панель зв'язку (телефон) */
+.mobile-bar {
+  display: none;
+}
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+  .mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    background: var(--dark);
+    border-top: 1px solid #444;
+  }
+  .mobile-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+  .mobile-bar-call {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
+  .mobile-bar-tg {
+    background: var(--gray);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: white;
+  }
+  .back-to-top {
+    left: 20px;
+    bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  .hero-content {
+    bottom: calc(104px + env(safe-area-inset-bottom));
+  }
+}
+@media (max-width: 768px) and (max-height: 500px) {
+  .hero-content {
+    bottom: auto;
+  }
+  .hero-pause {
+    bottom: 80px;
+  }
+}
