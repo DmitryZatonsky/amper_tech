@@ -555,6 +555,12 @@ a {
   color: var(--primary);
   margin-right: 15px;
 }
+.contact-item a {
+  color: inherit;
+}
+.contact-item a:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 768px) {
   .contact-grid {
