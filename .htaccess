@@ -15,3 +15,9 @@
     RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
     RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 </IfModule>
+
+# Службові файли недоступні, якщо папка деплоїться цілком (.git, .claude, .gitignore тощо; .well-known дозволено)
+<IfModule mod_alias.c>
+    RedirectMatch 404 "/\.(?!well-known/)"
+    RedirectMatch 404 "\.md$"
+</IfModule>
