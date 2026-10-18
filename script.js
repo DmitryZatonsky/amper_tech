@@ -412,4 +412,194 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.readyState === "complete") whenIdle();
     else window.addEventListener("load", whenIdle, { once: true });
   })();
+
+  // 7. Фотогалерея «Наші роботи»
+  (function () {
+    // Щоб додати фото: покласти WebP у /image/gallery/ і додати рядок у список нижче.
+    // file — ім'я файлу, w/h — розміри в пікселях. uk/ru — опис для alt (можна не вказувати).
+    // Імена файлів і описи без назв об'єктів і клієнтів.
+    const GALLERY_PATH = "/image/gallery/";
+    const GALLERY = [
+      { file: "work-01.webp", w: 675, h: 1200, uk: "Кухня з точковим світлом і підсвіткою робочої зони", ru: "Кухня с точечным светом и подсветкой рабочей зоны" },
+      { file: "work-02.webp", w: 900, h: 1200, uk: "Готовий щит і вимикачі на бетонній стіні", ru: "Готовый щит и выключатели на бетонной стене" },
+      { file: "work-03.webp", w: 900, h: 1200, uk: "Рівні траси кабелів на бетонній стелі", ru: "Ровные трассы кабелей на бетонном потолке" },
+      { file: "work-04.webp", w: 1200, h: 900, uk: "Шоурум зі світловим оформленням", ru: "Шоурум со световым оформлением" },
+      { file: "work-05.webp", w: 900, h: 1200, uk: "Готовий квартирний щит із маркуванням ліній", ru: "Готовый квартирный щит с маркировкой линий" },
+      { file: "work-06.webp", w: 675, h: 1200, uk: "Кімната з прихованою LED-підсвіткою стелі", ru: "Комната со скрытой LED-подсветкой потолка" },
+      { file: "work-07.webp", w: 900, h: 1200, uk: "Розподільча коробка з підписаними кабелями", ru: "Распределительная коробка с подписанными кабелями" },
+      { file: "work-08.webp", w: 900, h: 1200, uk: "Програмований таймер Hager для керування світлом", ru: "Программируемый таймер Hager для управления светом" },
+      { file: "work-09.webp", w: 900, h: 1200, uk: "Щит Hager з маркованими клемами", ru: "Щит Hager с маркированными клеммами" },
+      { file: "work-10.webp", w: 900, h: 1200, uk: "Коробка з підписаними лініями «точкове світло, вентиляція»", ru: "Коробка с подписанными линиями «точечный свет, вентиляция»" },
+      { file: "work-11.webp", w: 900, h: 1200, uk: "Інвертор MUST з батареями LiFePO4 у квартирі", ru: "Инвертор MUST с батареями LiFePO4 в квартире" },
+      { file: "work-12.webp", w: 900, h: 1200, uk: "Монтаж інвертора Deye з акумуляторними шафами", ru: "Монтаж инвертора Deye с аккумуляторными шкафами" },
+      { file: "work-13.webp", w: 900, h: 1200, uk: "Інвертор EASUN і батарея Seplos біля щита", ru: "Инвертор EASUN и батарея Seplos возле щита" },
+    ];
+
+    const root = document.getElementById("worksCarousel");
+    if (!root || GALLERY.length < 2) return;
+    const stage = root.querySelector(".carousel-stage");
+    const prevBtn = root.querySelector(".carousel-prev");
+    const nextBtn = root.querySelector(".carousel-next");
+    const pauseBtn = root.querySelector(".carousel-pause");
+    const isRu = (document.documentElement.lang || "uk") === "ru";
+    const defaultAlt = isRu ? "Электромонтажные работы Amper Tech" : "Електромонтажні роботи Amper Tech";
+    const slideLabel = root.dataset.slideLabel || "{n} / {total}";
+
+    const AUTO_MS = 2000; // автопрокрутка
+    const USER_PAUSE_MS = 6000; // пауза після дії користувача
+    const EAGER_COUNT = 3; // перші кадри вантажаться одразу, решта — lazy
+    const GAP = 16;
+    const SIDE_SCALE = 0.8;
+
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    const autoAllowed = !reduceMotion && !saveData;
+
+    const total = GALLERY.length;
+    let current = 0;
+    let built = false;
+    let timer = null;
+    let userPaused = false; // кнопка паузи
+    let pausedUntil = 0; // пауза після стрілки / дотику
+    let hovering = false;
+    let focused = false;
+    let tabHidden = document.hidden;
+    let inView = true;
+    const slides = [];
+
+    function build() {
+      if (built) return;
+      built = true;
+      GALLERY.forEach((item, i) => {
+        const slide = document.createElement("div");
+        slide.className = "carousel-slide";
+        slide.setAttribute("role", "group");
+        slide.setAttribute("aria-roledescription", "slide");
+        slide.setAttribute("aria-label", slideLabel.replace("{n}", i + 1).replace("{total}", total));
+        const img = document.createElement("img");
+        img.src = GALLERY_PATH + item.file;
+        img.alt = (isRu ? item.ru : item.uk) || defaultAlt;
+        img.width = item.w;
+        img.height = item.h;
+        img.loading = i < EAGER_COUNT ? "eager" : "lazy";
+        img.decoding = "async";
+        slide.appendChild(img);
+        slide.addEventListener("click", () => {
+          if (slide.classList.contains("is-center")) return;
+          go(i, true);
+        });
+        stage.appendChild(slide);
+        slides.push(slide);
+      });
+      [prevBtn, nextBtn].forEach((b) => b && (b.hidden = false));
+      if (pauseBtn && autoAllowed) pauseBtn.hidden = false;
+      layout();
+    }
+
+    function layout() {
+      if (!slides.length) return;
+      const w = slides[0].offsetWidth;
+      const step = w * 0.5 + w * SIDE_SCALE * 0.5 + GAP;
+      slides.forEach((slide, i) => {
+        let d = i - current;
+        d = ((((d + total / 2) % total) + total) % total) - total / 2;
+        const ad = Math.abs(d);
+        const x = d === 0 ? 0 : Math.sign(d) * (step + (ad - 1) * (w * SIDE_SCALE + GAP));
+        slide.style.transform = `translateX(${x}px) scale(${d === 0 ? 1 : SIDE_SCALE})`;
+        slide.style.opacity = ad === 0 ? "1" : ad <= 2 ? "0.6" : "0";
+        slide.style.zIndex = String(10 - Math.min(ad, 9));
+        slide.style.pointerEvents = ad <= 2 ? "auto" : "none";
+        slide.classList.toggle("is-center", d === 0);
+        slide.setAttribute("aria-hidden", d === 0 ? "false" : "true");
+        const img = slide.firstChild;
+        if (ad <= 2 && img.loading === "lazy") img.loading = "eager";
+      });
+    }
+
+    function go(index, byUser) {
+      current = ((index % total) + total) % total;
+      if (byUser) pausedUntil = Date.now() + USER_PAUSE_MS;
+      layout();
+    }
+
+    function canAutoplay() {
+      return (
+        autoAllowed && built && !userPaused && !hovering && !focused && !tabHidden && inView && Date.now() >= pausedUntil
+      );
+    }
+
+    function tick() {
+      if (canAutoplay()) go(current + 1, false);
+    }
+
+    function startTimer() {
+      if (!autoAllowed || timer) return;
+      timer = setInterval(tick, AUTO_MS);
+    }
+
+    // Кнопки
+    if (prevBtn) prevBtn.addEventListener("click", () => go(current - 1, true));
+    if (nextBtn) nextBtn.addEventListener("click", () => go(current + 1, true));
+    if (pauseBtn) {
+      pauseBtn.addEventListener("click", () => {
+        userPaused = !userPaused;
+        pauseBtn.setAttribute("aria-pressed", String(userPaused));
+        pauseBtn.setAttribute("aria-label", userPaused ? pauseBtn.dataset.labelPlay : pauseBtn.dataset.labelPause);
+      });
+    }
+
+    // Клавіатура: стрілки, коли фокус усередині каруселі
+    root.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        go(current - 1, true);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        go(current + 1, true);
+      }
+    });
+
+    // Наведення, фокус, дотик — зупиняють автопрокрутку
+    root.addEventListener("mouseenter", () => (hovering = true));
+    root.addEventListener("mouseleave", () => (hovering = false));
+    root.addEventListener("focusin", () => (focused = true));
+    root.addEventListener("focusout", () => (focused = false));
+
+    // Свайп
+    let startX = null;
+    let startY = null;
+    stage.addEventListener("pointerdown", (e) => {
+      startX = e.clientX;
+      startY = e.clientY;
+      pausedUntil = Date.now() + USER_PAUSE_MS;
+    });
+    stage.addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      startX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(current + (dx < 0 ? 1 : -1), true);
+    });
+    stage.addEventListener("pointercancel", () => (startX = null));
+
+    document.addEventListener("visibilitychange", () => (tabHidden = document.hidden));
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        inView = entries[entries.length - 1].isIntersecting;
+      }).observe(root);
+    }
+    window.addEventListener("resize", layout);
+
+    // Запуск після завантаження сторінки, щоб не заважати першому екрану
+    function init() {
+      build();
+      startTimer();
+    }
+    function whenIdle() {
+      if ("requestIdleCallback" in window) window.requestIdleCallback(init);
+      else setTimeout(init, 1500);
+    }
+    if (document.readyState === "complete") whenIdle();
+    else window.addEventListener("load", whenIdle, { once: true });
+  })();
 });

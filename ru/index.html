@@ -42,7 +42,7 @@
     <link rel="apple-touch-icon" href="../favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="../style.css?v=20261018d" />
+    <link rel="stylesheet" href="../style.css?v=20261018f" />
 
     <!-- TODO: Google Analytics 4. Підставити Measurement ID замість G-XXXXXXXXXX (двічі) і прибрати коментар.
          Без ID сайт працює без gtag, події в analytics.js просто не відправляються. -->
@@ -64,7 +64,7 @@
       >
     </nav>
 
-    <script src="../analytics.js?v=20261018d" defer></script>
+    <script src="../analytics.js?v=20261018f" defer></script>
 
     <script type="application/ld+json">
       {
@@ -243,7 +243,6 @@
             <span class="step-num" aria-hidden="true">3</span>
             <h3>Черновые работы</h3>
             <p>Прокладываем линии</p>
-            <span class="step-tag">приемка отдельно</span>
           </li>
           <li class="step">
             <span class="step-num" aria-hidden="true">4</span>
@@ -254,11 +253,12 @@
             <span class="step-num" aria-hidden="true">5</span>
             <h3>Фотофиксация</h3>
             <p>Фиксируем на фото скрытую проводку</p>
+            <span class="step-tag">приемка отдельно</span>
           </li>
           <li class="step">
             <span class="step-num" aria-hidden="true">6</span>
             <h3>Чистовые работы</h3>
-            <p>Завершаем работы</p>
+            <p>Монтируем светильники, розетки, выключатели</p>
             <span class="step-tag">приемка отдельно</span>
           </li>
         </ol>
@@ -291,10 +291,7 @@
             <li>Общая длина кабеля и количество точек</li>
             <li>Материал стен и способ прокладки (штроба, бетон, открытая)</li>
             <li>Сложность щита</li>
-            <li>Черновые или чистовые работы</li>
-            <li>Состояние объекта</li>
           </ul>
-          <p class="cost-example">Две однокомнатные квартиры могут отличаться по объёму кабеля в несколько раз, поэтому цена считается после осмотра.</p>
           <p class="estimate">Расчёт сметы — от 2500 грн. Если мы договорились о работах, эта сумма вычитается из стоимости работ. Стоимость работ по прайсу фиксируется на день договорённости.</p>
           <div class="cta-row">
             <a href="#form" class="btn btn-primary">Получить расчёт</a>
@@ -304,50 +301,43 @@
       </div>
     </section>
 
-    <!-- узгодити з власником об'єкта перед публікацією; номер будинку й точну адресу не вказувати -->
-    <section id="cases" class="section">
-      <div class="container">
-        <h2 class="section-title">Наши работы</h2>
-        <div class="cases-grid">
-          <article class="case-card">
-            <img src="/image/cases/05-kejs-kvartyra-1-kukhnia.webp" alt="Кухня с точечным светом и подсветкой рабочей зоны" width="675" height="1200" loading="lazy" />
-            <h3>Квартира в центре Киева</h3>
-          </article>
-          <article class="case-card">
-            <img src="/image/cases/10-kejs-budynok-2-kabeli.webp" alt="Ровные трассы кабелей на бетонном потолке" width="900" height="1200" loading="lazy" />
-            <h3>Частный дом, Таценки</h3>
-          </article>
-          <article class="case-card">
-            <img src="/image/cases/12-kejs-ofis-1-shourum.webp" alt="Шоурум со световым оформлением" width="1200" height="900" loading="lazy" />
-            <h3>Офис-шоурум</h3>
-          </article>
-          <article class="case-card">
-            <img src="/image/cases/17-kejs-sto-3-gotovo.webp" alt="Готовый щит и выключатели на бетонной стене" width="900" height="1200" loading="lazy" />
-            <h3>СТО</h3>
-          </article>
-        </div>
-
-        <div class="process">
-          <h3>Процесс</h3>
-          <p class="process-note">Так выглядит работа до чистовой отделки: ровные трассы, подписанные линии, порядок в коробках</p>
-          <div class="gallery-grid">
-          <figure>
-            <img src="/image/cases/08-kejs-kvartyra-4-korobka.webp" alt="Распределительная коробка с подписанными кабелями" width="900" height="1200" loading="lazy" />
-            <figcaption aria-hidden="true">Распределительная коробка с подписанными кабелями</figcaption>
-          </figure>
-          <figure>
-            <img src="/image/cases/11-kejs-budynok-3-markuvannia.webp" alt="Коробка с подписанными линиями «точечный свет, вентиляция»" width="900" height="1200" loading="lazy" />
-            <figcaption aria-hidden="true">Коробка с подписанными линиями «точечный свет, вентиляция»</figcaption>
-          </figure>
-          <figure>
-            <img src="/image/cases/16-kejs-sto-2-shchyt-hager.webp" alt="Щит Hager с маркированными клеммами" width="900" height="1200" loading="lazy" />
-            <figcaption aria-hidden="true">Щит Hager с маркированными клеммами</figcaption>
-          </figure>
-          <figure>
-            <img src="/image/cases/14-kejs-ofis-3-taimer.webp" alt="Программируемый таймер Hager для управления светом" width="900" height="1200" loading="lazy" />
-            <figcaption aria-hidden="true">Программируемый таймер Hager для управления светом</figcaption>
-          </figure>
-          </div>
+    <!-- узгодити з власниками об'єктів перед публікацією; фото додаються у списку GALLERY на початку блоку «7. Фотогалерея» в script.js -->
+    <section id="works" class="section">
+      <h2 class="section-title">Наши работы</h2>
+      <div
+        class="carousel"
+        id="worksCarousel"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Наши работы"
+        tabindex="0"
+        data-slide-label="Фото {n} из {total}"
+      >
+        <div class="carousel-stage"></div>
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" type="button" hidden aria-label="Предыдущее фото">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button
+            class="carousel-btn carousel-pause"
+            type="button"
+            hidden
+            aria-pressed="false"
+            aria-label="Остановить автопрокрутку"
+            data-label-pause="Остановить автопрокрутку"
+            data-label-play="Продолжить автопрокрутку"
+          >
+            <svg class="icon-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" />
+            </svg>
+          </button>
+          <button class="carousel-btn carousel-next" type="button" hidden aria-label="Следующее фото">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -409,7 +399,7 @@
           <details class="faq-item">
             <summary class="faq-question">Даёте ли вы гарантию на работу? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
             <div class="faq-answer">
-              Да, мы даем Официальную гарантию 5 лет на все наши монтажные работы. В случае каких-либо вопросов наш
+              Да, мы даем Официальную гарантию 1 год на все наши монтажные работы. В случае каких-либо вопросов наш
               мастер выезжает на объект бесплатно.
             </div>
           </details>
@@ -515,6 +505,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20261018d"></script>
+    <script src="../script.js?v=20261018f"></script>
   </body>
 </html>
