@@ -8,3 +8,10 @@
         Deny from all
     </IfModule>
 </FilesMatch>
+
+# 301: /index.html -> /, /ru/index.html -> /ru/ (THE_REQUEST, щоб не зациклитись із DirectoryIndex)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+    RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+</IfModule>
