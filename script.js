@@ -279,4 +279,137 @@ document.addEventListener("DOMContentLoaded", function () {
         priceContainer.innerHTML = `<div style="text-align:center; color:red; padding:30px;">${errorText}</div>`;
       });
   }
+
+  // 6. Зміна фото на першому екрані
+  (function () {
+    const hero = document.querySelector(".hero");
+    const slides = hero ? Array.from(hero.querySelectorAll(".hero-slide")) : [];
+    const pauseBtn = hero ? hero.querySelector(".hero-pause") : null;
+    if (slides.length < 2) return;
+
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (reduceMotion || saveData) return;
+
+    const HOLD_MS = 6500;
+    let current = 0;
+    let timer = null;
+    let userPaused = false;
+    let tabHidden = document.hidden;
+    let heroVisible = true;
+    let started = false;
+    const failed = new Set();
+
+    // Підставляє справжні адреси з data-атрибутів і чекає на декодування
+    function prepare(slide) {
+      if (slide.dataset.ready === "1") return Promise.resolve(true);
+      if (failed.has(slide)) return Promise.resolve(false);
+      const img = slide.querySelector("img");
+      const source = slide.querySelector("source");
+      if (!img) return Promise.resolve(false);
+      if (source && source.dataset.srcset) source.srcset = source.dataset.srcset;
+      if (img.dataset.src) img.src = img.dataset.src;
+      const ready = img.decode ? img.decode() : Promise.resolve();
+      return ready.then(
+        () => {
+          slide.dataset.ready = "1";
+          return true;
+        },
+        () => {
+          failed.add(slide);
+          return false;
+        }
+      );
+    }
+
+    function canRun() {
+      return started && !userPaused && !tabHidden && heroVisible;
+    }
+
+    function stop() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+    }
+
+    // Шукає наступний готовий кадр; якщо його ще немає — лишається на поточному
+    function next() {
+      timer = null;
+      if (!canRun()) return;
+      const total = slides.length;
+      let target = -1;
+      for (let step = 1; step < total; step++) {
+        const idx = (current + step) % total;
+        if (!failed.has(slides[idx])) {
+          target = idx;
+          break;
+        }
+      }
+      if (target === -1) return;
+      prepare(slides[target]).then((ok) => {
+        if (!canRun() || timer) return;
+        if (ok) {
+          slides[current].classList.remove("is-active");
+          slides[target].classList.add("is-active");
+          current = target;
+        }
+        schedule();
+      });
+    }
+
+    function schedule() {
+      stop();
+      if (canRun()) timer = setTimeout(next, HOLD_MS);
+    }
+
+    function sync() {
+      if (canRun()) {
+        if (!timer) schedule();
+      } else {
+        stop();
+      }
+    }
+
+    function start() {
+      if (started) return;
+      started = true;
+      if (pauseBtn) pauseBtn.hidden = false;
+      // Наступний кадр вантажимо заздалегідь, поки показується поточний
+      prepare(slides[1 % slides.length]);
+      sync();
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      tabHidden = document.hidden;
+      sync();
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        heroVisible = entries[entries.length - 1].isIntersecting;
+        sync();
+      }).observe(hero);
+    }
+
+    if (pauseBtn) {
+      pauseBtn.addEventListener("click", () => {
+        userPaused = !userPaused;
+        pauseBtn.setAttribute("aria-pressed", String(userPaused));
+        pauseBtn.setAttribute(
+          "aria-label",
+          userPaused ? pauseBtn.dataset.labelPlay : pauseBtn.dataset.labelPause
+        );
+        sync();
+      });
+    }
+
+    function whenIdle() {
+      if ("requestIdleCallback" in window) window.requestIdleCallback(start);
+      else setTimeout(start, 1500);
+    }
+
+    if (document.readyState === "complete") whenIdle();
+    else window.addEventListener("load", whenIdle, { once: true });
+  })();
 });
