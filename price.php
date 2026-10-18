@@ -45,6 +45,7 @@ header('Cache-Control: no-cache');
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="style.css?v=20261019a" />
 
     <!-- TODO: Google Analytics 4. Підставити Measurement ID замість G-XXXXXXXXXX (двічі) і прибрати коментар.
