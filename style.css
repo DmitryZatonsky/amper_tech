@@ -1,8 +1,9 @@
-/* Inter зі свого хостингу (OFL, див. fonts/OFL.txt): змінний шрифт, ваги 100–900 */
+/* Inter зі свого хостингу (OFL, див. fonts/OFL.txt). Один змінний файл на набір символів;
+   три ваги 400/600/800 оголошені окремо, як було в Google Fonts (тому звичайний bold 700 малюється вагою 800) */
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
   font-display: swap;
   src: url("/fonts/inter-cyrillic.woff2") format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -10,7 +11,41 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
   font-display: swap;
   src: url("/fonts/inter-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -20,7 +55,23 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inter-uah.woff2") format("woff2");
+  unicode-range: U+20B4;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/inter-uah.woff2") format("woff2");
+  unicode-range: U+20B4;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
   font-display: swap;
   src: url("/fonts/inter-uah.woff2") format("woff2");
   unicode-range: U+20B4;
@@ -95,6 +146,62 @@ a {
   font-size: 2.5rem;
   margin-bottom: 50px;
   font-weight: 800;
+}
+
+/* SVG-іконки (спрайт image/icons.svg, Font Awesome Free 6.5.1): розмір і колір як у шрифтових іконок */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+  overflow: visible;
+}
+.icon-bars {
+  width: 0.875em;
+}
+.icon-xmark {
+  width: 0.75em;
+}
+.icon-file-invoice-dollar {
+  width: 0.75em;
+}
+.icon-qrcode {
+  width: 0.875em;
+}
+.icon-cloud {
+  width: 1.25em;
+}
+.icon-location-dot {
+  width: 0.75em;
+}
+.icon-plug-circle-bolt {
+  width: 1.125em;
+}
+.icon-fire {
+  width: 0.875em;
+}
+.icon-instagram {
+  width: 0.875em;
+}
+.icon-tiktok {
+  width: 0.875em;
+}
+.icon-telegram {
+  width: 0.96875em;
+}
+.icon-spin {
+  animation: icon-spin 1s linear infinite;
+}
+@keyframes icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .icon-spin {
+    animation: none;
+  }
 }
 
 /* Header */
@@ -355,7 +462,8 @@ a {
   transform: translateY(-10px);
   border-bottom-color: var(--primary);
 }
-.card i {
+.card .icon {
+  display: block;
   font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 20px;
@@ -451,7 +559,7 @@ a {
   color: white;
   font-weight: 600;
 }
-.success-msg i {
+.success-msg .icon {
   color: var(--primary);
 }
 
@@ -654,7 +762,7 @@ a {
   outline: 3px solid var(--primary-text);
   outline-offset: -3px;
 }
-.faq-question i {
+.faq-question .icon {
   flex-shrink: 0;
   transition: transform 0.3s;
 }
@@ -665,7 +773,7 @@ a {
   padding: 0 20px 20px;
   color: #555;
 }
-.faq-item[open] .faq-question i {
+.faq-item[open] .faq-question .icon {
   transform: rotate(180deg);
   color: var(--primary-text);
 }
@@ -737,7 +845,7 @@ a {
   align-items: center;
   margin-bottom: 20px;
 }
-.contact-item i {
+.contact-item .icon {
   font-size: 20px;
   color: var(--primary);
   margin-right: 15px;
@@ -804,7 +912,7 @@ a {
     visibility 0.3s,
     background-color 0.3s;
 }
-.back-to-top i {
+.back-to-top .icon {
   color: var(--primary);
   transition: transform 0.3s;
 }
@@ -816,7 +924,7 @@ a {
 .back-to-top:hover {
   background-color: var(--primary);
 }
-.back-to-top:hover i {
+.back-to-top:hover .icon {
   color: var(--on-primary);
   transform: scale(1.1);
 }
@@ -1228,7 +1336,8 @@ html {
   border-radius: 12px;
   box-shadow: var(--shadow);
 }
-.info-card i {
+.info-card .icon {
+  display: block;
   font-size: 2rem;
   color: var(--primary);
   margin-bottom: 14px;

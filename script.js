@@ -41,14 +41,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainNav = document.getElementById("mainNav");
   const overlay = document.getElementById("overlay");
 
+  // Значок меню: «бургер» ↔ «хрестик» (зміна символу в SVG-спрайті)
+  function setMenuIcon(isOpen) {
+    const icon = menuToggle && menuToggle.querySelector(".icon");
+    if (!icon) return;
+    const name = isOpen ? "xmark" : "bars";
+    icon.querySelector("use").setAttribute("href", "/image/icons.svg#" + name);
+    icon.classList.remove("icon-bars", "icon-xmark");
+    icon.classList.add("icon-" + name);
+  }
+
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
       const isActive = mainNav.classList.toggle("active");
       if (overlay) overlay.classList.toggle("active");
       menuToggle.setAttribute("aria-expanded", String(isActive));
-      const icon = menuToggle.querySelector("i");
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-xmark");
+      setMenuIcon(isActive);
     });
   }
 
@@ -58,11 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (overlay) overlay.classList.remove("active");
       if (menuToggle) {
         menuToggle.setAttribute("aria-expanded", "false");
-        const icon = menuToggle.querySelector("i");
-        if (icon) {
-          icon.classList.add("fa-bars");
-          icon.classList.remove("fa-xmark");
-        }
+        setMenuIcon(false);
       }
     });
   });
@@ -73,11 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       overlay.classList.remove("active");
       if (menuToggle) {
         menuToggle.setAttribute("aria-expanded", "false");
-        const icon = menuToggle.querySelector("i");
-        if (icon) {
-          icon.classList.add("fa-bars");
-          icon.classList.remove("fa-xmark");
-        }
+        setMenuIcon(false);
       }
     });
   }
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     priceContainer.innerHTML = `
       <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666;">
-        <i class="fa-solid fa-spinner fa-spin" style="margin-right: 10px;"></i> ${loadingText}
+        <svg class="icon icon-spinner icon-spin" style="margin-right: 10px;" aria-hidden="true"><use href="/image/icons.svg#spinner"></use></svg> ${loadingText}
       </div>
     `;
 
