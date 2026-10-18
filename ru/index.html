@@ -58,24 +58,87 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Electrician",
-        "name": "Amper Tech",
-        "image": "https://amper-tech.kiev.ua/image/og-image.jpg",
-        "url": "https://amper-tech.kiev.ua/ru/",
-        "telephone": "+380992618747",
-        "email": "info@amper-tech.kiev.ua",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "ул. Академика Белецкого, 9В",
-          "addressLocality": "Киев",
-          "postalCode": "02000",
-          "addressCountry": "UA"
-        },
-        "areaServed": "Киев и область",
-        "sameAs": [
-          "https://www.instagram.com/amper_tech.kiev",
-          "https://www.tiktok.com/@amper_tech",
-          "https://t.me/amper_tech"
+        "@graph": [
+          {
+            "@type": "Electrician",
+            "@id": "https://amper-tech.kiev.ua/ru/#business",
+            "name": "Amper Tech",
+            "url": "https://amper-tech.kiev.ua/ru/",
+            "image": "https://amper-tech.kiev.ua/image/og-image.jpg",
+            "telephone": "+380992618747",
+            "email": "info@amper-tech.kiev.ua",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ул. Академика Белецкого, 9В",
+              "addressLocality": "Киев",
+              "postalCode": "02000",
+              "addressCountry": "UA"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Киев"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Киевская область"
+              }
+            ],
+            "sameAs": [
+              "https://www.instagram.com/amper_tech.kiev",
+              "https://www.tiktok.com/@amper_tech",
+              "https://t.me/amper_tech"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://amper-tech.kiev.ua/ru/#website",
+            "url": "https://amper-tech.kiev.ua/ru/",
+            "name": "Amper Tech",
+            "inLanguage": "ru",
+            "publisher": {
+              "@id": "https://amper-tech.kiev.ua/ru/#business"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://amper-tech.kiev.ua/ru/#faq",
+            "inLanguage": "ru",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Изменится ли цена после начала работ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Нет. Мы составляем детальную смету до начала монтажа. Сумма фиксируется в договоре и остается неизменной, если вы не решите добавить новые точки в процессе."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Что такое QR-паспорт щита?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Это наклейка на внутренней стороне вашего электрощита. Отсканировав ее, вы получите доступ к цифровой схеме разводки кабелей по квартире. Вы точно будете знать, где можно сверлить стену, а где нет."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Какие материалы вы используете?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Работаем только с проверенными брендами (Schneider Electric, ABB, Hager). Используем кабель ВВГнг-п LS, который не поддерживает горение и имеет низкое дымовыделение."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Даёте ли вы гарантию на работу?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Да, предоставляем гарантию 1 год на все наши монтажные работы."
+                }
+              }
+            ]
+          }
         ]
       }
     </script>
