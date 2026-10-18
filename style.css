@@ -1712,3 +1712,27 @@ html {
   z-index: 0;
   isolation: isolate;
 }
+
+/* Сторінка 404 */
+.not-found-links {
+  margin: 25px 0;
+}
+.not-found-links .btn {
+  text-decoration: none;
+}
+.not-found-links .btn-primary {
+  color: var(--on-primary);
+}
+.not-found-links .btn-dark-outline {
+  color: var(--dark);
+}
+.not-found-links .btn-dark-outline:hover {
+  color: white;
+}
+.not-found-ru {
+  margin-top: 10px;
+}
+.not-found-ru a {
+  color: var(--primary-text);
+  text-decoration: underline;
+}

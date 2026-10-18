@@ -39,3 +39,6 @@
         Deny from all
     </IfModule>
 </FilesMatch>
+
+# Власна сторінка 404
+ErrorDocument 404 /404.html
