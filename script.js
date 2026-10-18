@@ -81,14 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 4. Акордеон FAQ
-  document.querySelectorAll(".faq-item").forEach((item) => {
-    item.addEventListener("click", () => {
-      item.classList.toggle("active");
-    });
-  });
-
-  // 4. Кнопка "Вгору"
+  // 3. Кнопка "Вгору"
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
     window.addEventListener("scroll", () => {
@@ -108,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 5. Маска телефону
+  // 4. Маска телефону
   const phoneInput = document.getElementById("phone");
   if (phoneInput) {
     phoneInput.addEventListener("input", function (e) {
@@ -127,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 6. Завантаження прайс-листа (якщо ми на сторінці прайсу)
+  // 5. Завантаження прайс-листа (якщо ми на сторінці прайсу)
   const priceContainer = document.querySelector("#priceContainer");
   if (priceContainer) {
     // Визначаємо поточну мову на основі тегу <html>
