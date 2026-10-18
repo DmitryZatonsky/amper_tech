@@ -1081,7 +1081,7 @@ html {
 }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .gallery-grid figure img {
@@ -1098,7 +1098,8 @@ html {
   color: #555;
 }
 @media (max-width: 992px) {
-  .cases-grid {
+  .cases-grid,
+  .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
