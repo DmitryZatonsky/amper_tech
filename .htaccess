@@ -42,3 +42,13 @@
 
 # Власна сторінка 404
 ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------------------------------
+# Прайс із сервера. НЕ ВМИКАТИ, поки не перевірено https://amper-tech.kiev.ua/price.php
+# (і https://amper-tech.kiev.ua/ru/price.php). Якщо таблиця там є, зняти символи # з рядків нижче:
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteRule ^price\.html$ price.php [L]
+#     RewriteRule ^ru/price\.html$ ru/price.php [L]
+# </IfModule>
+# ---------------------------------------------------------------------------------------------

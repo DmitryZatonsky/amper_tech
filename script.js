@@ -125,10 +125,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 5. Завантаження прайс-листа (якщо ми на сторінці прайсу)
   const priceContainer = document.querySelector("#priceContainer");
-  if (priceContainer) {
+  // Якщо таблицю вже віддав сервер (price.php), завантаження з Google з браузера не потрібне
+  if (priceContainer && !priceContainer.dataset.serverRendered) {
     // Визначаємо поточну мову на основі тегу <html>
     const currentLang = document.documentElement.lang || "uk";
-    console.log("Текущий язык:", currentLang);
 
     const urlUA =
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vROD4iOuzSng4WWKDeMCJeIkC90_ca00ol3ZUXyNycZcbvlIR5YjPXwSv7089B_9IgzxtcrZLCw6HYf/pub?gid=0&single=true&output=csv";

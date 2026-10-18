@@ -1,0 +1,236 @@
+<?php
+/* Прайс із таблиці на сервері (див. price-lib.php). Адреса на сайті лишається /price.html (rewrite у .htaccess). */
+define('PRICE_PAGE', true);
+require dirname(__DIR__) . '/price-lib.php';
+$priceHtml = price_render_html('ru');
+header('Content-Type: text/html; charset=utf-8');
+header('Cache-Control: no-cache');
+?><!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Прайс на электромонтажные работы | Amper Tech</title>
+    <meta
+      name="description"
+      content="Актуальные цены на электромонтаж в Киеве: разводка проводки, подключение щитов, монтаж розеток. Фиксированная стоимость без скрытых доплат."
+    />
+
+    <link rel="alternate" hreflang="uk" href="https://amper-tech.kiev.ua/price.html" />
+    <link rel="alternate" hreflang="ru" href="https://amper-tech.kiev.ua/ru/price.html" />
+    <link rel="alternate" hreflang="x-default" href="https://amper-tech.kiev.ua/price.html" />
+    <link rel="canonical" href="https://amper-tech.kiev.ua/ru/price.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Amper Tech" />
+    <meta property="og:title" content="Прайс на электромонтажные работы | Amper Tech" />
+    <meta
+      property="og:description"
+      content="Актуальные цены на электромонтаж в Киеве: разводка проводки, подключение щитов, монтаж розеток. Фиксированная стоимость без скрытых доплат."
+    />
+    <meta property="og:url" content="https://amper-tech.kiev.ua/ru/price.html" />
+    <meta property="og:image" content="https://amper-tech.kiev.ua/image/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Прайс на электромонтажные работы | Amper Tech" />
+    <meta
+      name="twitter:description"
+      content="Актуальные цены на электромонтаж в Киеве: разводка проводки, подключение щитов, монтаж розеток. Фиксированная стоимость без скрытых доплат."
+    />
+    <meta name="twitter:image" content="https://amper-tech.kiev.ua/image/og-image.jpg" />
+
+
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="apple-touch-icon" href="../favicon.png" />
+    <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../style.css?v=20261019a" />
+
+    <!-- TODO: Google Analytics 4. Підставити Measurement ID замість G-XXXXXXXXXX (двічі) і прибрати коментар.
+         Без ID сайт працює без gtag, події в analytics.js просто не відправляються. -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+    -->
+    <script src="../analytics.js?v=20261019a" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://amper-tech.kiev.ua/ru/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Прайс",
+                "item": "https://amper-tech.kiev.ua/ru/price.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <section class="section-dark">
+      <div class="container container-wrap">
+        <header class="header">
+          <a href="/ru/"
+            ><div class="logo">AMPER<span>TECH</span></div></a
+          >
+
+          <nav class="nav" id="mainNav">
+            <a href="/ru/">Главная</a>
+            <a href="/ru/price.html">Прайс</a>
+            <a href="/ru/backup-power.html">Резервное питание</a>
+          </nav>
+          <div class="nav-menu-button">
+            <div class="lang-switcher">
+              <span class="lang-item active">RU</span>
+              <span class="lang-divider">|</span>
+              <a href="/price.html" class="lang-item">UA</a>
+            </div>
+
+            <a href="tel:+380992618747" class="btn btn-outline" aria-label="Позвонить">
+              <svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg#phone"></use></svg>
+            </a>
+
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Открыть меню"
+              aria-expanded="false"
+              aria-controls="mainNav"
+            >
+              <svg class="icon icon-bars" aria-hidden="true"><use href="/image/icons.svg#bars"></use></svg>
+            </button>
+            <div class="overlay" id="overlay"></div>
+          </div>
+        </header>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <h1 class="section-title">Цены на электромонтажные работы в Киеве</h1>
+        <p style="text-align: center; margin-bottom: 40px">
+          Цены актуальны на сегодня. Конечная смета фиксируется после ознакомления с объектом.
+        </p>
+
+        <div id="priceContainer"<?php if ($priceHtml !== '') { echo ' data-server-rendered="1"'; } ?>>
+<?php if ($priceHtml !== '') { echo $priceHtml; } else { ?>
+          <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666">
+            <svg class="icon icon-spinner icon-spin" style="margin-right: 10px" aria-hidden="true"><use href="/image/icons.svg#spinner"></use></svg> Загрузка цен...
+          </div>
+<?php } ?>
+        </div>
+      </div>
+    </section>
+
+    <section id="cost-short" class="section section-alt">
+      <div class="container">
+        <div class="cost-box">
+          <h2 class="section-title">От чего зависит стоимость</h2>
+          <ul class="cost-list">
+            <li>Общая длина кабеля и количество точек</li>
+            <li>Материал стен и способ прокладки (штроба, бетон, открытая)</li>
+            <li>Сложность щита</li>
+          </ul>
+          <p class="estimate">Расчёт сметы — от 2500 грн. Если мы договорились о работах, эта сумма вычитается из стоимости работ. Стоимость работ по прайсу фиксируется на день договорённости.</p>
+          <div class="cta-row">
+            <a href="#form" class="btn btn-primary">Получить расчёт</a>
+            <a href="https://t.me/amper_tech" class="btn btn-dark-outline" target="_blank" rel="noopener noreferrer">Отправить фото или план в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="form" class="section section-dark">
+      <div class="container">
+        <div class="form-wrapper">
+          <div class="form-info">
+            <h2>Зарядите свой дом на надежность</h2>
+            <p>Получите расчет стоимости, который не изменится в процессе работ.</p>
+          </div>
+          <form id="landingForm" class="order-form" action="/handler.php" method="POST">
+            <div class="input-group">
+              <label for="name" class="sr-only">Ваше имя</label>
+              <input type="text" id="name" name="name" placeholder="Ваше имя" required />
+            </div>
+            <div class="input-group">
+              <label for="phone" class="sr-only">Телефон</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+38 (___) ___-__-__"
+                pattern="\+38 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}"
+                title="Введите номер в формате +38 (XXX) XXX-XX-XX"
+                required
+              />
+            </div>
+            <div class="input-group hp-field" aria-hidden="true">
+              <label for="website">Оставьте это поле пустым</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Получить консультацию</button>
+            <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/ru/privacy.html">политикой конфиденциальности</a></p>
+          </form>
+          <div id="formSuccess" class="success-msg" style="display: none">
+            <svg class="icon icon-circle-check" aria-hidden="true"><use href="/image/icons.svg#circle-check"></use></svg> Спасибо! Мы свяжемся с вами в течение 10 минут.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <a href="/ru/"
+            ><div class="logo">AMPER<span>TECH</span></div></a
+          >
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/amper_tech.kiev" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"
+              ><svg class="icon icon-instagram" aria-hidden="true"><use href="/image/icons.svg#instagram"></use></svg></a>
+            <a href="https://www.tiktok.com/@amper_tech" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"
+              ><svg class="icon icon-tiktok" aria-hidden="true"><use href="/image/icons.svg#tiktok"></use></svg></a>
+            <a href="https://t.me/amper_tech" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg#telegram"></use></svg></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Amper Tech. Профессиональный электромонтаж.</p>
+          <p><a href="/ru/privacy.html">Политика конфиденциальности</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <nav class="mobile-bar" aria-label="Быстрая связь">
+      <a href="tel:+380992618747" class="mobile-bar-call"><svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg#phone"></use></svg> Позвонить</a>
+      <a href="https://t.me/amper_tech" class="mobile-bar-tg" target="_blank" rel="noopener noreferrer"
+        ><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg#telegram"></use></svg> Telegram</a
+      >
+    </nav>
+
+    <div id="backToTop" class="back-to-top" role="button" tabindex="0" aria-label="Наверх">
+      <svg class="icon icon-chevron-up" aria-hidden="true"><use href="/image/icons.svg#chevron-up"></use></svg>
+    </div>
+
+    <script src="../script.js?v=20261019a"></script>
+  </body>
+</html>
