@@ -208,7 +208,12 @@ a {
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0, rgba(10, 10, 10, 0) 160px),
-    linear-gradient(90deg, rgba(10, 10, 10, 0.86) 0%, rgba(10, 10, 10, 0.66) 42%, rgba(10, 10, 10, 0.18) 100%);
+    linear-gradient(
+      90deg,
+      rgba(10, 10, 10, 0.88) 0,
+      rgba(10, 10, 10, 0.72) max(760px, 55%),
+      rgba(10, 10, 10, 0.18) 100%
+    );
 }
 .hero-slide {
   position: absolute;
