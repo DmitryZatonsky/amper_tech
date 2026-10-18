@@ -153,6 +153,15 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
     function parseCSVLine(text) {
       let val = "",
         char = "",
@@ -243,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <tbody>
           `;
           items.forEach((item) => {
-            tableHtml += `<tr><td>${item.name}</td><td>${item.unit}</td><td>${item.price} ₴</td></tr>`;
+            tableHtml += `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.unit)}</td><td>${escapeHtml(item.price)} ₴</td></tr>`;
           });
           tableHtml += `</tbody></table></div>`;
           return tableHtml;
@@ -255,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
           finalHtml += `
             <div class="price-category-group" style="margin-bottom: 60px;" data-aos="fade-up">
               <h2 class="category-title" style="font-size: 2rem; color: var(--primary); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 15px; font-weight: 800; text-transform: uppercase;">
-                ${categoryName}
+                ${escapeHtml(categoryName)}
               </h2>
           `;
           if (catData._noSubcategoryItems.length > 0) finalHtml += generateTableHtml(catData._noSubcategoryItems);
@@ -264,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
             finalHtml += `
               <div class="price-subcategory-group">
                 <h3 class="subcategory-title">
-                  ${subName}
+                  ${escapeHtml(subName)}
                 </h3>
             `;
             finalHtml += generateTableHtml(catData._subcategories[subName]);

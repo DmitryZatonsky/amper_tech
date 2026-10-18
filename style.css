@@ -681,6 +681,50 @@ html {
   color: var(--primary);
   white-space: nowrap;
 }
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+  .price-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+  .price-table,
+  .price-table tbody {
+    display: block;
+  }
+  .price-table tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .price-table tr:last-child {
+    border-bottom: none;
+  }
+  .price-table th,
+  .price-table td {
+    padding: 0;
+    border-bottom: none;
+  }
+  .price-table td:first-child {
+    grid-column: 1 / -1;
+    overflow-wrap: anywhere;
+  }
+  .price-table td:nth-child(2) {
+    color: #555;
+    font-size: 0.9rem;
+  }
+  .price-table td:last-child {
+    text-align: right;
+  }
+}
 .price-subcategory-group {
   margin-bottom: 35px;
 }
