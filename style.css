@@ -788,6 +788,37 @@ html {
   color: var(--primary);
   transform: scale(1.2);
 }
+.footer-bottom a,
+.form-note a {
+  color: inherit;
+  text-decoration: underline;
+}
+.footer-bottom a:hover,
+.form-note a:hover {
+  color: var(--primary);
+}
+.legal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.legal h2 {
+  font-size: 1.4rem;
+  margin: 30px 0 10px;
+}
+.legal p,
+.legal ul {
+  margin-bottom: 10px;
+}
+.legal ul {
+  padding-left: 22px;
+}
+.legal a {
+  color: var(--primary-text);
+  text-decoration: underline;
+}
+.legal-date {
+  color: #555;
+}
 .footer-bottom {
   text-align: center;
   font-size: 0.9rem;
