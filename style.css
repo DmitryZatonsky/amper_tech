@@ -1400,6 +1400,16 @@ html {
     transform 0.5s ease,
     opacity 0.5s ease;
 }
+/* Без JS показується лише перше фото; решта не вантажиться (display: none) */
+.carousel:not(.is-ready) .carousel-slide:not(:first-child) {
+  display: none;
+}
+.carousel:not(.is-ready) .carousel-slide:first-child {
+  opacity: 1;
+}
+.carousel-stage.is-init .carousel-slide {
+  transition: none;
+}
 .carousel-slide.is-center {
   cursor: default;
 }

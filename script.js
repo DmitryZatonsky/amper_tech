@@ -417,40 +417,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 7. Фотогалерея «Наші роботи»
   (function () {
-    // Щоб додати фото: покласти WebP у /image/gallery/ і додати рядок у список нижче.
-    // file — ім'я файлу, w/h — розміри в пікселях (кадри квадратні, 1080×1080). uk/ru — опис для alt (можна не вказувати).
-    // Імена файлів і описи без назв об'єктів і клієнтів.
-    const GALLERY_PATH = "/image/gallery/";
-    const GALLERY = [
-      { file: "work-01.webp", w: 1080, h: 1080, uk: "Шоурум зі світловим оформленням", ru: "Шоурум со световым оформлением" },
-      { file: "work-02.webp", w: 1080, h: 1080, uk: "Святкове освітлення ковзанки: потяг і башта з годинником", ru: "Праздничное освещение катка: поезд и башня с часами" },
-      { file: "work-03.webp", w: 1080, h: 1080, uk: "Кухня з точковим світлом", ru: "Кухня с точечным светом" },
-      { file: "work-04.webp", w: 1080, h: 1080, uk: "Світлові лінії в знімальному павільйоні", ru: "Световые линии в съёмочном павильоне" },
-      { file: "work-05.webp", w: 1080, h: 1080, uk: "Дзеркало з LED-підсвіткою у ванній", ru: "Зеркало с LED-подсветкой в ванной" },
-      { file: "work-06.webp", w: 1080, h: 1080, uk: "Неонова вказівка «Укриття»", ru: "Неоновый указатель «Укриття»" },
-      { file: "work-07.webp", w: 1080, h: 1080, uk: "Готовий щит і вимикачі на бетонній стіні", ru: "Готовый щит и выключатели на бетонной стене" },
-      { file: "work-08.webp", w: 1080, h: 1080, uk: "Телестудія зі світловим оформленням", ru: "Телестудия со световым оформлением" },
-      { file: "work-09.webp", w: 1080, h: 1080, uk: "Коридор із точковими світильниками і трековим світлом", ru: "Коридор с точечными светильниками и трековым светом" },
-      { file: "work-10.webp", w: 1080, h: 1080, uk: "Гірлянди над ковзанкою", ru: "Гирлянды над катком" },
-      { file: "work-11.webp", w: 1080, h: 1080, uk: "Гібридний інвертор Deye з акумуляторними шафами", ru: "Гибридный инвертор Deye с аккумуляторными шкафами" },
-      { file: "work-12.webp", w: 1080, h: 1080, uk: "Новорічна інсталяція з підсвіткою на площі", ru: "Новогодняя инсталляция с подсветкой на площади" },
-      { file: "work-13.webp", w: 1080, h: 1080, uk: "Кімната з прихованою LED-підсвіткою стелі", ru: "Комната со скрытой LED-подсветкой потолка" },
-      { file: "work-14.webp", w: 1080, h: 1080, uk: "Неонові вказівки на заході", ru: "Неоновые указатели на мероприятии" },
-      { file: "work-15.webp", w: 1080, h: 1080, uk: "Закритий щит із автоматикою в офісі", ru: "Закрытый щит с автоматикой в офисе" },
-      { file: "work-16.webp", w: 1080, h: 1080, uk: "Башта з годинником біля ковзанки", ru: "Башня с часами у катка" },
-      { file: "work-17.webp", w: 1080, h: 1080, uk: "Розетки й вимикач після чистового монтажу", ru: "Розетки и выключатель после чистового монтажа" },
-      { file: "work-18.webp", w: 1080, h: 1080, uk: "LED-підсвітка стіни телестудії", ru: "LED-подсветка стены телестудии" },
-      { file: "work-19.webp", w: 1080, h: 1080, uk: "Сцена з освітленням", ru: "Сцена с освещением" },
-      { file: "work-20.webp", w: 1080, h: 1080, uk: "Акумулятори Seplos у стійці", ru: "Аккумуляторы Seplos в стойке" },
-      { file: "work-21.webp", w: 1080, h: 1080, uk: "Готовий квартирний щит із маркуванням ліній", ru: "Готовый квартирный щит с маркировкой линий" },
-      { file: "work-22.webp", w: 1080, h: 1080, uk: "Програмований таймер Hager для керування світлом", ru: "Программируемый таймер Hager для управления светом" },
-      { file: "work-23.webp", w: 1080, h: 1080, uk: "Дзеркальна новорічна інсталяція", ru: "Зеркальная новогодняя инсталляция" },
-      { file: "work-24.webp", w: 1080, h: 1080, uk: "Інвертор MUST з батареями у квартирі", ru: "Инвертор MUST с батареями в квартире" },
-    ];
+    // Фото лежать у HTML (index.html і ru/index.html, блок .carousel-slide). Скрипт лише керує показом.
 
     const root = document.getElementById("worksCarousel");
-    if (!root || GALLERY.length < 2) return;
+    if (!root) return;
     const stage = root.querySelector(".carousel-stage");
+    const slides = Array.from(stage.querySelectorAll(".carousel-slide"));
+    const total = slides.length;
+    if (total < 2) return;
     const prevBtn = root.querySelector(".carousel-prev");
     const nextBtn = root.querySelector(".carousel-next");
     const pauseBtn = root.querySelector(".carousel-pause");
@@ -468,7 +442,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveData = navigator.connection && navigator.connection.saveData;
     const autoAllowed = !reduceMotion && !saveData;
 
-    const total = GALLERY.length;
     let current = 0;
     let built = false;
     let timer = null;
@@ -478,35 +451,28 @@ document.addEventListener("DOMContentLoaded", function () {
     let focused = false;
     let tabHidden = document.hidden;
     let inView = true;
-    const slides = [];
 
     function build() {
       if (built) return;
       built = true;
-      GALLERY.forEach((item, i) => {
-        const slide = document.createElement("div");
-        slide.className = "carousel-slide";
+      slides.forEach((slide, i) => {
         slide.setAttribute("role", "group");
         slide.setAttribute("aria-roledescription", "slide");
         slide.setAttribute("aria-label", slideLabel.replace("{n}", i + 1).replace("{total}", total));
-        const img = document.createElement("img");
-        img.src = GALLERY_PATH + item.file;
-        img.alt = (isRu ? item.ru : item.uk) || defaultAlt;
-        img.width = item.w;
-        img.height = item.h;
-        img.loading = i < EAGER_COUNT ? "eager" : "lazy";
-        img.decoding = "async";
-        slide.appendChild(img);
+        const img = slide.querySelector("img");
+        if (img && !img.getAttribute("alt")) img.alt = defaultAlt;
+        if (img && i < EAGER_COUNT) img.loading = "eager";
         slide.addEventListener("click", () => {
           if (slide.classList.contains("is-center")) return;
           go(i, true);
         });
-        stage.appendChild(slide);
-        slides.push(slide);
       });
+      root.classList.add("is-ready");
+      stage.classList.add("is-init"); // перше розташування без анімації
       [prevBtn, nextBtn].forEach((b) => b && (b.hidden = false));
       if (pauseBtn && autoAllowed) pauseBtn.hidden = false;
       layout();
+      requestAnimationFrame(() => requestAnimationFrame(() => stage.classList.remove("is-init")));
     }
 
     function layout() {
@@ -524,8 +490,8 @@ document.addEventListener("DOMContentLoaded", function () {
         slide.style.pointerEvents = ad <= 2 ? "auto" : "none";
         slide.classList.toggle("is-center", d === 0);
         slide.setAttribute("aria-hidden", d === 0 ? "false" : "true");
-        const img = slide.firstChild;
-        if (ad <= 2 && img.loading === "lazy") img.loading = "eager";
+        const img = slide.querySelector("img");
+        if (img && ad <= 2 && img.loading === "lazy") img.loading = "eager";
       });
     }
 
