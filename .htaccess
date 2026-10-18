@@ -28,3 +28,14 @@
         Header set Cache-Control "no-cache"
     </FilesMatch>
 </IfModule>
+
+# Логи помилок не віддаємо назовні
+<FilesMatch "\.log$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

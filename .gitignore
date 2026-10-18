@@ -10,3 +10,6 @@ Thumbs.db
 
 # Локальні налаштування Claude Code
 .claude/
+
+# Логи помилок пошти
+*.log
