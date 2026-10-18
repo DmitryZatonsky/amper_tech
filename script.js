@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const catData = categories[categoryName];
           finalHtml += `
             <div class="price-category-group" style="margin-bottom: 60px;" data-aos="fade-up">
-              <h2 class="category-title" style="font-size: 2rem; color: var(--primary); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 15px; font-weight: 800; text-transform: uppercase;">
+              <h2 class="category-title" style="font-size: 2rem; color: var(--primary-text); margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 15px; font-weight: 800; text-transform: uppercase;">
                 ${escapeHtml(categoryName)}
               </h2>
           `;
