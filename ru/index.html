@@ -84,6 +84,53 @@
   </head>
   <body>
     <section class="hero hero-electrical">
+      <div class="hero-slides" aria-hidden="true">
+        <picture class="hero-slide is-active">
+          <source media="(orientation: portrait)" srcset="/image/hero/1-shourum-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img src="/image/hero/1-shourum-desktop.webp" alt="" width="1920" height="1080" fetchpriority="high" />
+        </picture>
+        <picture class="hero-slide">
+          <source media="(orientation: portrait)" data-srcset="/image/hero/2-trasy-kabeliv-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img data-src="/image/hero/2-trasy-kabeliv-desktop.webp" alt="" width="1920" height="1080" decoding="async" />
+        </picture>
+        <picture class="hero-slide">
+          <source media="(orientation: portrait)" data-srcset="/image/hero/3-shchyt-sto-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img data-src="/image/hero/3-shchyt-sto-desktop.webp" alt="" width="1920" height="1080" decoding="async" />
+        </picture>
+        <picture class="hero-slide">
+          <source media="(orientation: portrait)" data-srcset="/image/hero/4-rezerv-deye-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img data-src="/image/hero/4-rezerv-deye-desktop.webp" alt="" width="1920" height="1080" decoding="async" />
+        </picture>
+        <picture class="hero-slide">
+          <source media="(orientation: portrait)" data-srcset="/image/hero/5-trasy-stelia-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img data-src="/image/hero/5-trasy-stelia-desktop.webp" alt="" width="1920" height="1080" decoding="async" />
+        </picture>
+        <picture class="hero-slide">
+          <source media="(orientation: portrait)" data-srcset="/image/hero/6-shchyt-hager-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img data-src="/image/hero/6-shchyt-hager-desktop.webp" alt="" width="1920" height="1080" decoding="async" />
+        </picture>
+        <picture class="hero-slide">
+          <source media="(orientation: portrait)" data-srcset="/image/hero/7-trasy-korobky-mobile.webp" type="image/webp" width="1080" height="1920" />
+          <img data-src="/image/hero/7-trasy-korobky-desktop.webp" alt="" width="1920" height="1080" decoding="async" />
+        </picture>
+      </div>
+      <button
+        class="hero-pause"
+        type="button"
+        hidden
+        aria-pressed="false"
+        aria-label="Остановить смену фото"
+        data-label-pause="Остановить смену фото"
+        data-label-play="Продолжить смену фото"
+      >
+        <svg class="icon-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <rect x="6" y="5" width="4" height="14" rx="1" />
+          <rect x="14" y="5" width="4" height="14" rx="1" />
+        </svg>
+        <svg class="icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" />
+        </svg>
+      </button>
       <div class="container container-wrap">
         <header class="header">
           <a href="/ru/"
