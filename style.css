@@ -1223,9 +1223,9 @@ html {
   outline-offset: 4px;
 }
 .carousel-stage {
-  --slide-w: 360px;
+  --slide-w: 420px;
   position: relative;
-  height: calc(var(--slide-w) * 4 / 3 + 20px);
+  height: calc(var(--slide-w) + 20px);
   overflow: hidden;
   touch-action: pan-y;
   user-select: none;
@@ -1235,7 +1235,7 @@ html {
   top: 10px;
   left: 50%;
   width: var(--slide-w);
-  height: calc(var(--slide-w) * 4 / 3);
+  aspect-ratio: 1 / 1;
   margin-left: calc(var(--slide-w) / -2);
   border-radius: 14px;
   overflow: hidden;
@@ -1256,6 +1256,7 @@ html {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  color: transparent; /* якщо фото не завантажилось, alt-текст не вилазить на сусідні слайди */
 }
 .carousel-controls {
   display: flex;
