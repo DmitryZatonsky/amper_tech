@@ -1,5 +1,5 @@
 # Блокуємо прямий доступ до файлів із секретами та лідами
-<FilesMatch "^(config\.php|leads\.csv)$">
+<FilesMatch "^(config\.php|leads\.csv|price-lib\.php)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -48,6 +48,11 @@ ErrorDocument 404 /404.html
 # (і https://amper-tech.kiev.ua/ru/price.php). Якщо таблиця там є, зняти символи # з рядків нижче:
 # <IfModule mod_rewrite.c>
 #     RewriteEngine On
+#     # 301 з прямих адрес .php на .html (THE_REQUEST, щоб не зациклитись із внутрішнім rewrite нижче)
+#     RewriteCond %{THE_REQUEST} \s/price\.php[\s?]
+#     RewriteRule ^price\.php$ /price.html [R=301,L]
+#     RewriteCond %{THE_REQUEST} \s/ru/price\.php[\s?]
+#     RewriteRule ^ru/price\.php$ /ru/price.html [R=301,L]
 #     RewriteRule ^price\.html$ price.php [L]
 #     RewriteRule ^ru/price\.html$ ru/price.php [L]
 # </IfModule>

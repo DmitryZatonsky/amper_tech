@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const icon = menuToggle && menuToggle.querySelector(".icon");
     if (!icon) return;
     const name = isOpen ? "xmark" : "bars";
-    icon.querySelector("use").setAttribute("href", "/image/icons.svg#" + name);
+    icon.querySelector("use").setAttribute("href", "/image/icons.svg?v=20261019a#" + name);
     icon.classList.remove("icon-bars", "icon-xmark");
     icon.classList.add("icon-" + name);
   }
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     priceContainer.innerHTML = `
       <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666;">
-        <svg class="icon icon-spinner icon-spin" style="margin-right: 10px;" aria-hidden="true"><use href="/image/icons.svg#spinner"></use></svg> ${loadingText}
+        <svg class="icon icon-spinner icon-spin" style="margin-right: 10px;" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#spinner"></use></svg> ${loadingText}
       </div>
     `;
 

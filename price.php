@@ -109,11 +109,11 @@ header('Cache-Control: no-cache');
             </div>
 
             <a href="tel:+380992618747" class="btn btn-outline" aria-label="Зателефонувати">
-              <svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg#phone"></use></svg>
+              <svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#phone"></use></svg>
             </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mainNav">
-              <svg class="icon icon-bars" aria-hidden="true"><use href="/image/icons.svg#bars"></use></svg>
+              <svg class="icon icon-bars" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#bars"></use></svg>
             </button>
             <div class="overlay" id="overlay"></div>
           </div>
@@ -131,7 +131,7 @@ header('Cache-Control: no-cache');
         <div id="priceContainer"<?php if ($priceHtml !== '') { echo ' data-server-rendered="1"'; } ?>>
 <?php if ($priceHtml !== '') { echo $priceHtml; } else { ?>
           <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666">
-            <svg class="icon icon-spinner icon-spin" style="margin-right: 10px" aria-hidden="true"><use href="/image/icons.svg#spinner"></use></svg> Завантаження цін...
+            <svg class="icon icon-spinner icon-spin" style="margin-right: 10px" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#spinner"></use></svg> Завантаження цін...
           </div>
 <?php } ?>
         </div>
@@ -188,7 +188,7 @@ header('Cache-Control: no-cache');
             <p class="form-note">Натискаючи кнопку, ви погоджуєтесь з <a href="/privacy.html">політикою конфіденційності</a></p>
           </form>
           <div id="formSuccess" class="success-msg" style="display: none">
-            <svg class="icon icon-circle-check" aria-hidden="true"><use href="/image/icons.svg#circle-check"></use></svg> Дякуємо! Ми зв'яжемося з вами протягом 10 хвилин.
+            <svg class="icon icon-circle-check" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#circle-check"></use></svg> Дякуємо! Ми зв'яжемося з вами протягом 10 хвилин.
           </div>
         </div>
       </div>
@@ -202,10 +202,10 @@ header('Cache-Control: no-cache');
           >
           <div class="footer-socials">
             <a href="https://www.instagram.com/amper_tech.kiev" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"
-              ><svg class="icon icon-instagram" aria-hidden="true"><use href="/image/icons.svg#instagram"></use></svg></a>
+              ><svg class="icon icon-instagram" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#instagram"></use></svg></a>
             <a href="https://www.tiktok.com/@amper_tech" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"
-              ><svg class="icon icon-tiktok" aria-hidden="true"><use href="/image/icons.svg#tiktok"></use></svg></a>
-            <a href="https://t.me/amper_tech" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg#telegram"></use></svg></a>
+              ><svg class="icon icon-tiktok" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#tiktok"></use></svg></a>
+            <a href="https://t.me/amper_tech" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#telegram"></use></svg></a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -216,14 +216,14 @@ header('Cache-Control: no-cache');
     </footer>
 
     <nav class="mobile-bar" aria-label="Швидкий зв'язок">
-      <a href="tel:+380992618747" class="mobile-bar-call"><svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg#phone"></use></svg> Подзвонити</a>
+      <a href="tel:+380992618747" class="mobile-bar-call"><svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#phone"></use></svg> Подзвонити</a>
       <a href="https://t.me/amper_tech" class="mobile-bar-tg" target="_blank" rel="noopener noreferrer"
-        ><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg#telegram"></use></svg> Telegram</a
+        ><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#telegram"></use></svg> Telegram</a
       >
     </nav>
 
     <div id="backToTop" class="back-to-top" role="button" tabindex="0" aria-label="Нагору">
-      <svg class="icon icon-chevron-up" aria-hidden="true"><use href="/image/icons.svg#chevron-up"></use></svg>
+      <svg class="icon icon-chevron-up" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#chevron-up"></use></svg>
     </div>
 
     <script src="script.js?v=20261019a"></script>
