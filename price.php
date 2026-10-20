@@ -46,22 +46,17 @@ header('Cache-Control: no-cache');
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="style.css?v=20261019a" />
+    <link rel="stylesheet" href="style.css?v=20261019b" />
 
-    <!-- TODO: Google Analytics 4. Підставити Measurement ID замість G-XXXXXXXXXX (двічі) і прибрати коментар.
-         Без ID сайт працює без gtag, події в analytics.js просто не відправляються. -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9MLTVKS8F"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C9MLTVKS8F');
     </script>
-    -->
-    <script src="analytics.js?v=20261019a" defer></script>
+    <script src="analytics.js?v=20261019b" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -109,11 +104,11 @@ header('Cache-Control: no-cache');
             </div>
 
             <a href="tel:+380992618747" class="btn btn-outline" aria-label="Зателефонувати">
-              <svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#phone"></use></svg>
+              <svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#phone"></use></svg>
             </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mainNav">
-              <svg class="icon icon-bars" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#bars"></use></svg>
+              <svg class="icon icon-bars" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#bars"></use></svg>
             </button>
             <div class="overlay" id="overlay"></div>
           </div>
@@ -131,7 +126,7 @@ header('Cache-Control: no-cache');
         <div id="priceContainer"<?php if ($priceHtml !== '') { echo ' data-server-rendered="1"'; } ?>>
 <?php if ($priceHtml !== '') { echo $priceHtml; } else { ?>
           <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666">
-            <svg class="icon icon-spinner icon-spin" style="margin-right: 10px" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#spinner"></use></svg> Завантаження цін...
+            <svg class="icon icon-spinner icon-spin" style="margin-right: 10px" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#spinner"></use></svg> Завантаження цін...
           </div>
 <?php } ?>
         </div>
@@ -188,7 +183,7 @@ header('Cache-Control: no-cache');
             <p class="form-note">Натискаючи кнопку, ви погоджуєтесь з <a href="/privacy.html">політикою конфіденційності</a></p>
           </form>
           <div id="formSuccess" class="success-msg" style="display: none">
-            <svg class="icon icon-circle-check" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#circle-check"></use></svg> Дякуємо! Ми зв'яжемося з вами протягом 10 хвилин.
+            <svg class="icon icon-circle-check" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#circle-check"></use></svg> Дякуємо! Ми зв'яжемося з вами протягом 10 хвилин.
           </div>
         </div>
       </div>
@@ -202,10 +197,10 @@ header('Cache-Control: no-cache');
           >
           <div class="footer-socials">
             <a href="https://www.instagram.com/amper_tech.kiev" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"
-              ><svg class="icon icon-instagram" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#instagram"></use></svg></a>
+              ><svg class="icon icon-instagram" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#instagram"></use></svg></a>
             <a href="https://www.tiktok.com/@amper_tech" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"
-              ><svg class="icon icon-tiktok" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#tiktok"></use></svg></a>
-            <a href="https://t.me/amper_tech" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#telegram"></use></svg></a>
+              ><svg class="icon icon-tiktok" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#tiktok"></use></svg></a>
+            <a href="https://t.me/amper_tech" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#telegram"></use></svg></a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -216,16 +211,16 @@ header('Cache-Control: no-cache');
     </footer>
 
     <nav class="mobile-bar" aria-label="Швидкий зв'язок">
-      <a href="tel:+380992618747" class="mobile-bar-call"><svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#phone"></use></svg> Подзвонити</a>
+      <a href="tel:+380992618747" class="mobile-bar-call"><svg class="icon icon-phone" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#phone"></use></svg> Подзвонити</a>
       <a href="https://t.me/amper_tech" class="mobile-bar-tg" target="_blank" rel="noopener noreferrer"
-        ><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#telegram"></use></svg> Telegram</a
+        ><svg class="icon icon-telegram" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#telegram"></use></svg> Telegram</a
       >
     </nav>
 
     <div id="backToTop" class="back-to-top" role="button" tabindex="0" aria-label="Нагору">
-      <svg class="icon icon-chevron-up" aria-hidden="true"><use href="/image/icons.svg?v=20261019a#chevron-up"></use></svg>
+      <svg class="icon icon-chevron-up" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#chevron-up"></use></svg>
     </div>
 
-    <script src="script.js?v=20261019a"></script>
+    <script src="script.js?v=20261019b"></script>
   </body>
 </html>
