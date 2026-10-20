@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // 1. Відправка форми
-  const form = document.getElementById("landingForm");
+  const form = document.getElementById("landingForm") || document.getElementById("backup-form");
   const successMsg = document.getElementById("formSuccess");
 
   if (form) {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Лише факт відправки; ім'я, телефон і текст повідомлення в GA не передаються
           if (typeof window.gtag === "function") {
             window.gtag("event", "generate_lead", {
-              form_id: form.id,
+              form_id: form.dataset.formId || form.id,
               page_path: location.pathname,
               language: document.documentElement.lang || "uk",
             });
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const icon = menuToggle && menuToggle.querySelector(".icon");
     if (!icon) return;
     const name = isOpen ? "xmark" : "bars";
-    icon.querySelector("use").setAttribute("href", "/image/icons.svg?v=20261019b#" + name);
+    icon.querySelector("use").setAttribute("href", "/image/icons.svg?v=20261020a#" + name);
     icon.classList.remove("icon-bars", "icon-xmark");
     icon.classList.add("icon-" + name);
   }
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     priceContainer.innerHTML = `
       <div style="text-align: center; padding: 30px; font-size: 1.2rem; color: #666;">
-        <svg class="icon icon-spinner icon-spin" style="margin-right: 10px;" aria-hidden="true"><use href="/image/icons.svg?v=20261019b#spinner"></use></svg> ${loadingText}
+        <svg class="icon icon-spinner icon-spin" style="margin-right: 10px;" aria-hidden="true"><use href="/image/icons.svg?v=20261020a#spinner"></use></svg> ${loadingText}
       </div>
     `;
 

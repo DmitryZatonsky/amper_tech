@@ -16,6 +16,7 @@
   function placement(link) {
     if (link.closest(".mobile-bar")) return "mobile_bar";
     if (link.closest("header")) return "header";
+    if (link.closest(".hero")) return "hero";
     if (link.closest("#cost")) return "cost_block";
     if (link.closest("#contacts")) return "contacts";
     if (link.closest("footer")) return "footer";

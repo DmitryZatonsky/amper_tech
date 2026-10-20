@@ -1746,3 +1746,179 @@ html {
   color: var(--primary-text);
   text-decoration: underline;
 }
+
+/* Сторінка «Резервне живлення» */
+.need-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.need-card {
+  background: white;
+  padding: 22px 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  font-weight: 600;
+}
+.section-foot {
+  text-align: center;
+  color: #555;
+  margin-top: 30px;
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.config-card h3 {
+  margin-bottom: 10px;
+}
+.brand-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.brand-list li {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-weight: 700;
+}
+.mount-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.mount-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 760px;
+  margin: 40px auto 0;
+}
+.photo-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.photo-grid figcaption {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+.info-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+}
+@media (min-width: 769px) {
+  .steps-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .need-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mount-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .need-grid,
+  .grid-2,
+  .config-grid,
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .photo-grid {
+    max-width: 420px;
+  }
+}
+
+/* Форма заявки з вибором (сторінка резерву) */
+.order-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 15px;
+  min-width: 0;
+}
+.order-form legend {
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.choice-group legend {
+  flex: 0 0 100%;
+}
+.choice {
+  position: relative;
+  display: inline-flex;
+}
+.order-form .choice input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.choice span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #333;
+  color: white;
+  line-height: 1.2;
+  transition: 0.2s;
+}
+.choice input:checked + span {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+}
+.choice input:focus-visible + span {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+.order-form textarea {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #333;
+  color: white;
+  font: inherit;
+  resize: vertical;
+}
