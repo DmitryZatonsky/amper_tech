@@ -48,13 +48,22 @@ header('Cache-Control: no-cache');
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../style.css?v=20261019b" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9MLTVKS8F"></script>
+    <!-- Google tag (gtag.js): команди копляться в dataLayer одразу, сам gtag.js вантажиться після load -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-C9MLTVKS8F');
+      window.addEventListener('load', function () {
+        function loadGtag() {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-C9MLTVKS8F';
+          document.head.appendChild(s);
+        }
+        if ('requestIdleCallback' in window) requestIdleCallback(loadGtag);
+        else setTimeout(loadGtag, 1500);
+      });
     </script>
     <script src="../analytics.js?v=20261019b" defer></script>
     <script type="application/ld+json">
